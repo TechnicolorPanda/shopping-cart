@@ -34,4 +34,10 @@
   li:hover {
     background-color: #111111;
   }
+
+  li.logo {
+      display: flex;
+      max-width: 70px;
+      height: 70px;
+  }
   
