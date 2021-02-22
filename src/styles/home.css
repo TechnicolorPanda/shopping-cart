@@ -1,0 +1,62 @@
+  
+h1 {
+    position: relative;
+    text-align: center;
+    line-height: 2;
+    font-family: 'Courier New', garamond, sans-serif;
+    font-size: 72px;
+    color: rgb(27, 27, 27);
+    text-decoration: none;
+    text-decoration-line: none;
+    text-shadow: 0 0 5px white, 0 0 5px whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    border-style: none;
+    border-width: 2px;
+    border-color: #ccc;
+    border-radius: 0%;
+}
+
+h3 {
+    position: relative;
+    text-align: right;
+    line-height: 2;
+    font-family: 'Courier New', garamond, sans-serif;
+    font-size: 30px;
+    color:white;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-shadow: 0 0 3px black, 0 0 3px black;
+    margin-right: 3rem;
+    margin-bottom: 0px;
+    width: 100%;
+    border-style: none;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 0%;
+}
+
+button {
+    position: relative;
+    padding: 5px;
+    margin-bottom: 3rem;
+    margin-top: 20px;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+  .background {
+    background-image: url('brooklyn-bridge.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #333333;
+  }
