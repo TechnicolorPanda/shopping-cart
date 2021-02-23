@@ -1,0 +1,41 @@
+body {
+    background-color: white;
+} 
+ 
+h1.shop-title {
+    position: relative;
+    text-align: center;
+    line-height: 2;
+    font-family: 'Courier New', garamond, sans-serif;
+    font-size: 48px;
+    color: rgb(27, 27, 27);
+    text-decoration: none;
+    text-decoration-line: none;
+    text-shadow: 0 0 6px white, 0 0 6px whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    border-style: none;
+    border-width: 2px;
+    border-color: #ccc;
+    border-radius: 0%;
+}
+
+img.item {
+    height: 20rem;
+    max-width: 20rem;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+.row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 33.33%;
+    padding: 5px;
+  }

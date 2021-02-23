@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/home.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -10,7 +11,11 @@ const Home = () => {
           Quality Bridges
       </h1>
       <h3>"Every path in life has a bridge ..."</h3>
-      <button>Shop Now</button>
+      <Link to = '/shop'>
+          <button className = 'shop'>
+              Shop Now
+         </button>
+      </Link>
     </div>
   );
 }
