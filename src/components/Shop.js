@@ -16,7 +16,7 @@ function Shop() {
       id: 8675,
       price: '$15,000,000',},
 
-      {name: 'Best Bridge',
+      {name: 'Basic Bridge',
       images: './images/broken-bridge.jpg',
       id: 5309,
       price: '$57.39',}
