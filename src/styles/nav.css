@@ -17,6 +17,7 @@
 
   li.shop {
       float: right;
+      padding-top: 2.5em;
   }
 
   li.cart {

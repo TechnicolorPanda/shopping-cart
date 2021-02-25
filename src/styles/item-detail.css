@@ -1,0 +1,45 @@
+body {
+    background-color: white;
+} 
+ 
+img.item-detail {
+    height: 20rem;
+    max-width: 20rem;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+.row {
+    display: flex;
+  }
+  
+.column {
+    flex: 33.33%;
+    padding: 5px;
+  }
+
+  input {
+      width: 1.5em;
+      height: 1.5em;
+      font-size: 14px;
+      text-align: center;
+  }
+
+  button#increase, button#decrease {
+      width: 1.5em;
+      height: 1.5em;
+      font-size: 18px;
+      font-weight: bold;
+  }
+
+  button#add-to-cart {
+    padding: 3px;
+    margin-left: 1em;
+    border: black 2px solid;
+    border-radius: 3px;
+  }
+
+  button:hover {
+      background-color: rgb(137, 189, 235);
+  }

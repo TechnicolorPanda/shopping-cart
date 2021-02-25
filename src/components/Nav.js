@@ -6,7 +6,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Nav() {
 
-    const logo = ('./images/logo.png');
+    const logo = ('../images/logo.png');
     const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
 
   return (
