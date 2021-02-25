@@ -20,7 +20,7 @@ h1 {
     border-radius: 0%;
 }
 
-h3 {
+h3.tagline {
     position: relative;
     text-align: right;
     line-height: 2;

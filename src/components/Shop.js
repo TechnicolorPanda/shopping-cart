@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import '../styles/shop.css';
 import {Link} from 'react-router-dom';
 import ShopItems from './ShopItems';
@@ -17,7 +17,7 @@ function Shop() {
               <img src = {item.images} alt = {item.name} className = 'item'></img>
             </Link>
             <h2>{item.name}</h2>
-            <h2>{item.price}</h2>
+            <h2>${item.price}</h2>
           </div>
         )))};
       </div>

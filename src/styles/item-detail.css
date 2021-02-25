@@ -10,6 +10,15 @@ img.item-detail {
     border-width: 2px;
 }
 
+h3.description {
+  font-size: 14px;
+  color: black;
+  text-shadow: none;
+  text-align: center;
+  margin-left: 15em;
+  width: 50%;
+}
+
 .row {
     display: flex;
   }

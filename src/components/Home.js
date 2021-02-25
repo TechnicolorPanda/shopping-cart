@@ -10,7 +10,7 @@ const Home = () => {
           <br/>
           Quality Bridges
       </h1>
-      <h3>"Every path in life has a bridge ..."</h3>
+      <h3 className = 'tagline'>"Every path in life has a bridge ..."</h3>
       <Link to = '/shop'>
           <button className = 'shop'>
               Shop Now

@@ -5,10 +5,7 @@ import {Link} from 'react-router-dom';
 
 function ItemDetail({ match }) {
 
-  console.log('item detail');
-
-  const [items, setItems] = useState([]);
-  const [itemDetails, setItemDetails] = useState({name: '', images: {}, id: '', price: ''});
+  const [itemDetails, setItemDetails] = useState({name: '', images: {}, id: '', price: '', description: '',});
   const [displayedItem, setDisplayedItem] = useState(parseInt(match.params.id));
   const [displayItems, setDisplayItems] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -16,31 +13,44 @@ function ItemDetail({ match }) {
   useEffect(() => {
     const matchingItem = [ShopItems];
     const shopDetail = matchingItem[0].item;
-    console.log(shopDetail);
-    console.log(displayedItem);
     const newItem = shopDetail.filter((shopDetail, i) => shopDetail.id === displayedItem);
     setItemDetails(newItem[0]);
     setDisplayItems(true);
   },[displayedItem])
- 
-  console.log(itemDetails.name);
-  console.log(quantity);
+
+  const onHandleChange = (event) => {
+    event.preventDefault();  
+    setQuantity(parseInt(event.target.value));
+  }
+
+  const increaseQuantity = (event) => {
+    event.preventDefault();
+    setQuantity(parseInt(quantity) + 1);
+  }
+
+  const decreaseQuantity = (event) => {
+    event.preventDefault();
+    if (quantity > 0) {
+      setQuantity(parseInt(quantity) - 1);
+    }
+  }
 
   return (
   <div>
     {displayItems 
     ? <div className = 'column'>
-      <Link to = {`/cart`}>
-        <img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img>
-      </Link>
+      <img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img>
       <h2>{itemDetails.name}</h2>
-      <h2>{itemDetails.price}</h2>
-
+      <h3 className = 'description'>{itemDetails.description}</h3>
+      <h2>${itemDetails.price}</h2>
+      
       <div>
-      <button id = 'decrease'>-</button>
-      <input id = 'quantity' value = {quantity}></input>
-      <button id = 'increase'>+</button>
-      <button id = 'add-to-cart'>Add to Cart</button>
+      <button id = 'decrease' onClick = {decreaseQuantity}>-</button>
+      <input id = 'quantity' value = {quantity} onChange = {onHandleChange}></input>
+      <button id = 'increase' onClick = {increaseQuantity}>+</button>
+      <Link to = {`/cart`}>
+        <button id = 'add-to-cart'>Add to Cart</button>
+      </Link>
       </div>
     </div>
     : null}
