@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 function ItemDetail({ match }) {
 
-  const [itemDetails, setItemDetails] = useState({name: '', images: {}, id: '', price: '', description: '',});
+  const [itemDetails, setItemDetails] = useState({name: '', images: '', id: '', price: '', description: '',});
   const [displayedItem, setDisplayedItem] = useState(parseInt(match.params.id));
   const [displayItems, setDisplayItems] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -48,7 +48,15 @@ function ItemDetail({ match }) {
       <button id = 'decrease' onClick = {decreaseQuantity}>-</button>
       <input id = 'quantity' value = {quantity} onChange = {onHandleChange}></input>
       <button id = 'increase' onClick = {increaseQuantity}>+</button>
-      <Link to = {`/cart`}>
+      <Link to = {{
+        pathname: `/cart`,
+        state: {
+          number: quantity,
+          item: itemDetails.name,
+          price: itemDetails.price,
+          id: itemDetails.id,
+        }
+      }}>
         <button id = 'add-to-cart'>Add to Cart</button>
       </Link>
       </div>
