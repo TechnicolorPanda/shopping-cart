@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+
 
 function Cart() {
 
@@ -7,12 +9,10 @@ function Cart() {
 
   const [cartItem, setCartItem] = useState({
     quantity: location.state.number, 
-    name: location.state.name, 
+    name: location.state.item, 
     price: location.state.price,
   });
   const [cartContents, setCartContents] = ([]);
-
-  console.log(cartItem);
 
   function calculatePrice() {
     const price1 = parseInt(cartItem.price) * parseInt(cartItem.quantity);
@@ -28,6 +28,16 @@ function Cart() {
     <div>
       <h1>Cart</h1>
       <h3>{cartItem.name} ${formattedPrice(cartItem.price)} x {cartItem.quantity} = {calculatePrice()}</h3>
+      <Link to = '/shop'>
+        <button className = 'go-to-store'>
+          Keep Shopping
+        </button>
+      </Link>
+      <Link to = '/checkout'>
+        <button className = 'checkout'>
+          Checkout
+        </button>
+      </Link>
   </div>
   );
 }
