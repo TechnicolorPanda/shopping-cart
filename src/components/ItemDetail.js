@@ -35,6 +35,10 @@ function ItemDetail({ match }) {
     }
   }
 
+  function formattedPrice(rawPrice) {
+    return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
   <div>
     {displayItems 
@@ -42,7 +46,7 @@ function ItemDetail({ match }) {
       <img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img>
       <h2>{itemDetails.name}</h2>
       <h3 className = 'description'>{itemDetails.description}</h3>
-      <h2>${itemDetails.price}</h2>
+      <h2>${formattedPrice(itemDetails.price)}</h2>
       
       <div>
       <button id = 'decrease' onClick = {decreaseQuantity}>-</button>

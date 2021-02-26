@@ -7,8 +7,8 @@ function Cart() {
 
   const [cartItem, setCartItem] = useState({
     quantity: location.state.number, 
-    name: location.state.item, 
-    price: location.state.price
+    name: location.state.name, 
+    price: location.state.price,
   });
   const [cartContents, setCartContents] = ([]);
 
@@ -17,18 +17,17 @@ function Cart() {
   function calculatePrice() {
     const price1 = parseInt(cartItem.price) * parseInt(cartItem.quantity);
     const price = price1.toFixed(2);
-    console.log(price);
-    return price;
+    return formattedPrice(price);
   }
 
-  useEffect(() => {
-    calculatePrice();
-  },[])
+  function formattedPrice(rawPrice) {
+    return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   return (
     <div>
       <h1>Cart</h1>
-      <h3>{cartItem.name} ${cartItem.price} x {cartItem.quantity} = </h3>
+      <h3>{cartItem.name} ${formattedPrice(cartItem.price)} x {cartItem.quantity} = {calculatePrice()}</h3>
   </div>
   );
 }

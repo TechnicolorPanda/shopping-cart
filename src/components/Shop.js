@@ -7,6 +7,10 @@ function Shop() {
 
   const items = ShopItems;
 
+  function formattedPrice(rawPrice) {
+    return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <div className = 'content'>
       <h2>Would you like to buy a bridge?</h2>
@@ -17,7 +21,7 @@ function Shop() {
               <img src = {item.images} alt = {item.name} className = 'item'></img>
             </Link>
             <h2>{item.name}</h2>
-            <h2>${item.price}</h2>
+            <h2>${formattedPrice(item.price)}</h2>
           </div>
         )))};
       </div>
