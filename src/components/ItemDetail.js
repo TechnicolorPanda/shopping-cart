@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import '../styles/item-detail.css';
 import ShopItems from './ShopItems';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ItemDetail({ match }) {
 

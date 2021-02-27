@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
+import DisplayCart from './DisplayCart';
+import uniqid from 'uniqid';
 
 
 function Cart() {
@@ -12,33 +13,32 @@ function Cart() {
     name: location.state.item, 
     price: location.state.price,
   });
-  const [cartContents, setCartContents] = ([]);
+  const [cartContents, setCartContents] = useState([]);
+  const [displayItems, setDisplayItems] = useState(false);
 
-  function calculatePrice() {
-    const price1 = parseInt(cartItem.price) * parseInt(cartItem.quantity);
-    const price = price1.toFixed(2);
-    return formattedPrice(price);
-  }
+  useEffect(() => {
+    setCartContents(cartContents => cartContents.concat(cartItem));
+    setCartItem('');
+    setDisplayItems(true);
+  },[])
 
-  function formattedPrice(rawPrice) {
-    return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+  console.log(cartContents);
+
+  // TODO: prevent reset of cart array
 
   return (
     <div>
-      <h1>Cart</h1>
-      <h3>{cartItem.name} ${formattedPrice(cartItem.price)} x {cartItem.quantity} = {calculatePrice()}</h3>
-      <Link to = '/shop'>
-        <button className = 'go-to-store'>
-          Keep Shopping
-        </button>
-      </Link>
-      <Link to = '/checkout'>
-        <button className = 'checkout'>
-          Checkout
-        </button>
-      </Link>
-  </div>
+      {displayItems
+        ? <div>
+        {cartContents.map((cartItem => {
+          return(<DisplayCart key = {uniqid()}
+            name = {cartItem.name} 
+            price = {cartItem.price}
+            quantity = {cartItem.quantity}
+          />)}))}
+    </div>
+    : null}
+    </div>
   );
 }
 
