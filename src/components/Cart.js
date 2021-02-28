@@ -2,13 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-function Cart(props) {
-
-  const { 
-    myCart,
-  } = props;
-
-  const [cartContents, setCartContents] = useState(myCart);
+function Cart() {
 
   const location = useLocation();
   const [cartItem, setCartItem] = useState({
@@ -17,12 +11,17 @@ function Cart(props) {
     price: location.state.itemDetails.price,
     id: location.state.itemDetails.id,
   });
-  // const [cartContents, setCartContents] = useState([]);
-
+  const [cartContents, setCartContents] = useState(
+    JSON.parse(localStorage.getItem('mySavedCart')) || []
+  );
+  
   useEffect(() => {
     setCartContents(cartContents => cartContents.concat(cartItem));
-    setCartItem('');
-  },[])
+  },[cartItem])
+
+  useEffect(() => {
+    localStorage.setItem('mySavedCart', JSON.stringify(cartContents));
+  },[cartContents])
 
   function calculatePrice(basePrice, baseQuantity) {
     const price1 = parseInt(basePrice) * parseInt(baseQuantity);
@@ -34,10 +33,6 @@ function Cart(props) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  console.log(cartContents);
-
-  // TODO: prevent reset of cart array
-
   return (
     <div>
       <h1>Cart</h1>
@@ -47,12 +42,7 @@ function Cart(props) {
         {calculatePrice(cartItem.price, cartItem.quantity)}</h3>
       )))}
 
-      <Link to = {{
-        pathname: `/shop`,
-        state: {
-          cartContents: cartContents,
-        }
-      }}>
+      <Link to = '/shop'>
         <button className = 'go-to-store'>
         Keep Shopping
         </button>

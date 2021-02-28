@@ -3,11 +3,7 @@ import '../styles/item-detail.css';
 import ShopItems from './ShopItems';
 import { Link } from 'react-router-dom';
 
-function ItemDetail({ match }, props) {
-
-  const { 
-    cartContents,
-  } = props;
+function ItemDetail({ match }) {
 
   const [itemDetails, setItemDetails] = useState({name: '', images: '', id: '', price: '', description: '',});
   const [displayedItem, setDisplayedItem] = useState(parseInt(match.params.id));
@@ -63,7 +59,6 @@ function ItemDetail({ match }, props) {
         state: {
           number: quantity,
           itemDetails: itemDetails,
-          myCart: cartContents,
         }
       }}>
         <button id = 'add-to-cart'>Add to Cart</button>

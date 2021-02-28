@@ -3,15 +3,9 @@ import '../styles/shop.css';
 import {Link} from 'react-router-dom';
 import ShopItems from './ShopItems';
 
-function Shop(props) {
+function Shop() {
 
-  const { 
-    cartContents,
-  } = props;
   const items = ShopItems;
-
-  // console.log(cartContents.length);
-
 
   function formattedPrice(rawPrice) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -23,12 +17,7 @@ function Shop(props) {
       <div className = 'row'>
         {items.item.map((item => ( 
           <div className = 'column' key = {item.id}>
-            <Link to = {{
-              pathname: `/shop/${item.id}`,
-              state: {
-                cartContents: cartContents,
-              }
-            }}>
+            <Link to = {`/shop/${item.id}`}>
               <img src = {item.images} alt = {item.name} className = 'item'></img>
             </Link>
             <h2>{item.name}</h2>

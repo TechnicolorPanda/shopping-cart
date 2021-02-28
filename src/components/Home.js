@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 
-  const cartContents = [];
-
-  console.log(cartContents.length);
-
   return (
     <div className = 'background'>
       <h1>George C. Parker's 
@@ -15,10 +11,7 @@ const Home = () => {
           Quality Bridges
       </h1>
       <h3 className = 'tagline'>"Every path in life has a bridge ..."</h3>
-      <Link to = {{
-        pathname: `/shop`,
-        state: {cartContents: cartContents}
-      }}>
+      <Link to = {`/shop`}>
         <button className = 'shop'>
             Shop Now
         </button>
