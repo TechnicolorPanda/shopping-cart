@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/item-detail.css';
 import ShopItems from './ShopItems';
 import { Link } from 'react-router-dom';
 
-function ItemDetail({ match }) {
+function ItemDetail({ match }, props) {
+
+  const { 
+    cartContents,
+  } = props;
 
   const [itemDetails, setItemDetails] = useState({name: '', images: '', id: '', price: '', description: '',});
   const [displayedItem, setDisplayedItem] = useState(parseInt(match.params.id));
@@ -35,6 +39,8 @@ function ItemDetail({ match }) {
     }
   }
 
+  //TODO: pass cartContents to Cart
+
   function formattedPrice(rawPrice) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -56,9 +62,8 @@ function ItemDetail({ match }) {
         pathname: `/cart`,
         state: {
           number: quantity,
-          item: itemDetails.name,
-          price: itemDetails.price,
-          id: itemDetails.id,
+          itemDetails: itemDetails,
+          myCart: cartContents,
         }
       }}>
         <button id = 'add-to-cart'>Add to Cart</button>

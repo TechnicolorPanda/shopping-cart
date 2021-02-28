@@ -8,6 +8,7 @@ function Nav() {
 
     const logo = ('../images/logo.png');
     const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
+    const quantity = 0;
 
   return (
     <nav>
@@ -15,11 +16,15 @@ function Nav() {
         <Link to = '/'>
           <li className = 'logo'><img src = {logo} alt = 'bridge logo'></img></li>
         </Link>
+
         <Link to = '/shop'>
           <li className = 'shop'>Shop</li>
         </Link>
+
         <Link to = '/cart'>
-          <li className = 'cart'>{shoppingCart}</li>
+          <li className = 'cart'>{shoppingCart}
+            <span className = 'item-count'>{quantity}</span>
+          </li>
         </Link>
       </ul>
     </nav>

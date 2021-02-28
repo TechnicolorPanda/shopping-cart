@@ -1,26 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
-import DisplayCart from './DisplayCart';
-import uniqid from 'uniqid';
+import { Link } from 'react-router-dom';
 
+function Cart(props) {
 
-function Cart() {
+  const { 
+    myCart,
+  } = props;
+
+  const [cartContents, setCartContents] = useState(myCart);
 
   const location = useLocation();
-
   const [cartItem, setCartItem] = useState({
     quantity: location.state.number, 
-    name: location.state.item, 
-    price: location.state.price,
+    name: location.state.itemDetails.name, 
+    price: location.state.itemDetails.price,
+    id: location.state.itemDetails.id,
   });
-  const [cartContents, setCartContents] = useState([]);
-  const [displayItems, setDisplayItems] = useState(false);
+  // const [cartContents, setCartContents] = useState([]);
 
   useEffect(() => {
     setCartContents(cartContents => cartContents.concat(cartItem));
     setCartItem('');
-    setDisplayItems(true);
   },[])
+
+  function calculatePrice(basePrice, baseQuantity) {
+    const price1 = parseInt(basePrice) * parseInt(baseQuantity);
+    const price = price1.toFixed(2);
+    return formattedPrice(price);
+  }
+
+  function formattedPrice(rawPrice) {
+    return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   console.log(cartContents);
 
@@ -28,16 +40,28 @@ function Cart() {
 
   return (
     <div>
-      {displayItems
-        ? <div>
-        {cartContents.map((cartItem => {
-          return(<DisplayCart key = {uniqid()}
-            name = {cartItem.name} 
-            price = {cartItem.price}
-            quantity = {cartItem.quantity}
-          />)}))}
-    </div>
-    : null}
+      <h1>Cart</h1>
+      {cartContents.map((cartItem => (
+        <h3 key = {cartItem.id}>{cartItem.name} 
+        ${formattedPrice(cartItem.price)} x {cartItem.quantity} = 
+        {calculatePrice(cartItem.price, cartItem.quantity)}</h3>
+      )))}
+
+      <Link to = {{
+        pathname: `/shop`,
+        state: {
+          cartContents: cartContents,
+        }
+      }}>
+        <button className = 'go-to-store'>
+        Keep Shopping
+        </button>
+      </Link>
+      <Link to = '/checkout'>
+        <button className = 'checkout'>
+        Checkout
+        </button>
+      </Link> 
     </div>
   );
 }
