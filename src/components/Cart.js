@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
+import '../styles/cart.css';
 
 function Cart() {
 
@@ -11,6 +12,7 @@ function Cart() {
     name: location.state.itemDetails.name, 
     price: location.state.itemDetails.price,
     id: location.state.itemDetails.id,
+    images: location.state.itemDetails.images,
   });
   const [cartContents, setCartContents] = useState(
     JSON.parse(localStorage.getItem('mySavedCart')) || []
@@ -51,13 +53,78 @@ function Cart() {
     return numberOfItems;
   }
 
+  const onHandleChange = (event) => {
+    event.preventDefault();  
+    let newQuantity = event.target.value;
+    setCartItem({
+      quantity: newQuantity, 
+      name: cartItem.name, 
+      price: cartItem.price,
+      id: cartItem.id,
+      images: cartItem.images,
+    });
+    setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
+  }
+
+  const increaseQuantity = (event) => {
+    event.preventDefault();
+    let newQuantity = cartItem.quantity;
+    newQuantity++;
+    setCartItem({
+      quantity: newQuantity, 
+      name: cartItem.name, 
+      price: cartItem.price,
+      id: cartItem.id,
+      images: cartItem.images,
+    });
+    setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
+  }
+
+  const decreaseQuantity = (event) => {
+    event.preventDefault();
+    let newQuantity = cartItem.quantity;
+    if (newQuantity > 0) {
+      newQuantity--;
+    };
+    console.log(newQuantity);
+    setCartItem({
+      quantity: newQuantity, 
+      name: cartItem.name, 
+      price: cartItem.price,
+      id: cartItem.id,
+      images: cartItem.images,
+    });
+    setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
+  }
+
+  console.log(cartContents);
+
   return (
     <div>
-      <h1>Cart</h1>
-      {cartContents.map((cartItem => (
-        <h3 key = {cartItem.id}>{cartItem.name} 
-        ${formattedPrice(cartItem.price)} x {cartItem.quantity} = 
-        {calculatePrice(cartItem.price, cartItem.quantity)}</h3>
+      <h2>Cart</h2>
+      <h3 className = 'row' id = 'categories'>
+        <div className = 'column'> </div>
+        <div className = 'column'>Item</div>
+        <div className = 'column'>Price</div>
+        <div className = 'column'>Quantity</div>
+        <div className = 'column'>Total Price</div>
+      </h3>
+      {cartContents.map(((cartItem) => (
+        <h3 className = 'row' key = {cartItem.id}>
+          <div className = 'column'><img src = {cartItem.images} alt = {cartItem.name} className = 'item'></img></div>
+          <div className = 'column'>{cartItem.name}</div>
+          <div className = 'column'>${formattedPrice(cartItem.price)}</div> 
+          <div className = 'column'>
+            <button id = 'decrease' onClick = {decreaseQuantity}>-</button>
+            <input id = 'quantity' 
+              value = {cartItem.quantity}
+              onFocus = {(e) => e.target.value = ''} 
+              onChange = {onHandleChange}>
+            </input>
+            <button id = 'increase' onClick = {increaseQuantity}>+</button>
+          </div>
+          <div className = 'column'>{calculatePrice(cartItem.price, cartItem.quantity)}</div>
+        </h3>
       )))}
       <h3 className = 'total'>Total = {totalCost(cartContents)}</h3>
 
@@ -70,6 +137,9 @@ function Cart() {
         Keep Shopping
         </button>
       </Link>
+      <button className = 'update'>
+        Update Cart
+      </button>
       <Link to = '/checkout'>
         <button className = 'checkout'>
         Checkout
