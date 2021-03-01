@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-function Nav() {
+function Nav(props) {
+
+  const {
+    totalQuantity
+  } = props;
 
     const logo = ('../images/logo.png');
     const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
@@ -23,7 +27,7 @@ function Nav() {
 
         <Link to = '/cart'>
           <li className = 'cart'>{shoppingCart}
-            <span className = 'item-count'>{quantity}</span>
+            <span className = 'item-count'>{totalQuantity}</span>
           </li>
         </Link>
       </ul>

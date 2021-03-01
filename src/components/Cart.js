@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 function Cart() {
 
@@ -33,6 +34,23 @@ function Cart() {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  function totalCost(cartContents) {
+    let total = 0;
+    cartContents.map((cartItem => (
+    total = parseInt(total) + parseInt(calculatePrice(cartItem.price, cartItem.quantity))
+    )));
+    let grandTotal = formattedPrice(total);
+    return grandTotal;
+  }
+
+  function numberOfItems(cartContents) {
+    let numberOfItems = 0;
+    cartContents.map((cartItem => (
+      numberOfItems = numberOfItems + cartItem.quantity
+    )));
+    return numberOfItems;
+  }
+
   return (
     <div>
       <h1>Cart</h1>
@@ -41,6 +59,11 @@ function Cart() {
         ${formattedPrice(cartItem.price)} x {cartItem.quantity} = 
         {calculatePrice(cartItem.price, cartItem.quantity)}</h3>
       )))}
+      <h3 className = 'total'>Total = {totalCost(cartContents)}</h3>
+
+      <Nav 
+        totalQuantity = {numberOfItems(cartContents)}
+      />
 
       <Link to = '/shop'>
         <button className = 'go-to-store'>
