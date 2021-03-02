@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Nav from './Nav';
 import '../styles/cart.css';
 
+// TODO: Create displayCart component and render saved cart there. Direct Nav bar to displayCart.
+
 function Cart() {
 
   const location = useLocation();
@@ -111,7 +113,7 @@ function Cart() {
       </h3>
       {cartContents.map(((cartItem) => (
         <h3 className = 'row' key = {cartItem.id}>
-          <div className = 'column'><img src = {cartItem.images} alt = {cartItem.name} className = 'item'></img></div>
+          <div className = 'column'><img src = {cartItem.images} alt = {cartItem.name} className = 'cart-item'></img></div>
           <div className = 'column'>{cartItem.name}</div>
           <div className = 'column'>${formattedPrice(cartItem.price)}</div> 
           <div className = 'column'>
@@ -126,7 +128,7 @@ function Cart() {
           <div className = 'column'>{calculatePrice(cartItem.price, cartItem.quantity)}</div>
         </h3>
       )))}
-      <h3 className = 'total'>Total = {totalCost(cartContents)}</h3>
+      <h3 className = 'total'>Total = ${totalCost(cartContents)}</h3>
 
       <Nav 
         totalQuantity = {numberOfItems(cartContents)}

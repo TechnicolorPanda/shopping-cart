@@ -3,7 +3,7 @@ body {
 } 
  
 h1.shop-title {
-    position: relative;
+    position: absolute;
     text-align: center;
     line-height: 2;
     font-family: 'Courier New', garamond, sans-serif;
@@ -38,4 +38,10 @@ img.item {
 .column {
     flex: 33.33%;
     padding: 5px;
+  }
+
+  .content {
+      top: 102px;
+      position: absolute;
+      text-align: center;
   }

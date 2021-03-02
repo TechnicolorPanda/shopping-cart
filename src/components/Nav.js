@@ -12,7 +12,6 @@ function Nav(props) {
 
     const logo = ('../images/logo.png');
     const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
-    const quantity = 0;
 
   return (
     <nav>
@@ -25,7 +24,7 @@ function Nav(props) {
           <li className = 'shop'>Shop</li>
         </Link>
 
-        <Link to = '/cart'>
+        <Link to = './cart'>
           <li className = 'cart'>{shoppingCart}
             <span className = 'item-count'>{totalQuantity}</span>
           </li>

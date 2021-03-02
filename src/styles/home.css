@@ -63,9 +63,12 @@ button.shop:hover {
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
+    width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
     background-color: #333333;
     padding-right: 3rem;
     padding-top: 2rem;
+    position: absolute;
+    top: 102px;
 }

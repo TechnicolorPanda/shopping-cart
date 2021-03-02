@@ -2,7 +2,7 @@ body {
     background-color: rgb(168, 208, 253);
 } 
  
-img.item {
+img.cart-item {
     height: 3rem;
     max-width: 3rem;
     border-style: solid;
