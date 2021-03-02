@@ -42,7 +42,7 @@ function ItemDetail({ match }) {
   }
 
   return (
-  <div>
+  <div className = 'item-selection'>
     {displayItems 
     ? <div className = 'column'>
       <img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img>

@@ -24,7 +24,7 @@ function Nav(props) {
           <li className = 'shop'>Shop</li>
         </Link>
 
-        <Link to = './cart'>
+        <Link to = './display-cart'>
           <li className = 'cart'>{shoppingCart}
             <span className = 'item-count'>{totalQuantity}</span>
           </li>

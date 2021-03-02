@@ -1,5 +1,11 @@
 body {
     background-color: rgb(168, 208, 253);
+    height: 100%;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    position: absolute;
+    top: 102p
 } 
  
 h1.shop-title {

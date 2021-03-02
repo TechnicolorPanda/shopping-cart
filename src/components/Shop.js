@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/shop.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ShopItems from './ShopItems';
 
 function Shop() {

@@ -1,6 +1,11 @@
 body {
     background-color: white;
 } 
+
+div.item-selection {
+    top: 102px;
+    position: absolute;
+}
  
 img.item-detail {
     height: 20rem;

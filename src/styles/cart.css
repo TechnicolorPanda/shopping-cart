@@ -1,5 +1,10 @@
 body {
     background-color: rgb(168, 208, 253);
+}
+
+div.cart-contents {
+    top: 102px;
+    position: static;
 } 
  
 img.cart-item {
