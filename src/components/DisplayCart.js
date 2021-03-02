@@ -19,17 +19,17 @@ const DisplayCart = () => {
   const [cartEmpty, setCartEmpty] = useState(true);
 
   useEffect(() => {
-    if(cartItem.length) {
+    console.log(cartItem.name);
+    if (cartItem.name === '') {
+    setCartEmpty(true);
+  } else {
       console.log('add item to contents');
       setCartContents(cartContents => cartContents.concat(cartItem));
-      setCartEmpty(false);
-    // } else {
-    //   console.log('cart empty');
-    //   setCartEmpty(true);
     }
   },[cartItem])
 
   useEffect(() => {
+    console.log(cartContents.length);
     if (cartContents.length) {
       setCartEmpty(false);
     }
@@ -109,6 +109,8 @@ const DisplayCart = () => {
     });
     setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
   }
+
+  console.log(cartEmpty);
 
   return (
     <div className = 'cart-contents'>
