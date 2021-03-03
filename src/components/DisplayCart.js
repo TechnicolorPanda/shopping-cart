@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
 
-const DisplayCart = () => {
+const DisplayCart = (props) => {
 
   console.log('display cart');
 
+  const {cartItems} = props;
+
   const [cartItem, setCartItem] = useState({
-    quantity: '', 
-    name: '', 
-    price: '',
-    id: '',
-    images: '',
+    quantity: cartItems.quantity || '', 
+    name: cartItems.name || '', 
+    price: cartItems.price || '',
+    id: cartItems.id || '',
+    images: cartItems.images || '',
   });
   const [cartContents, setCartContents] = useState(
     JSON.parse(localStorage.getItem('mySavedCart')) || []
@@ -21,7 +23,7 @@ const DisplayCart = () => {
   useEffect(() => {
     console.log(cartItem.name);
     if (cartItem.name === '') {
-    setCartEmpty(true);
+    console.log('no item');
   } else {
       console.log('add item to contents');
       setCartContents(cartContents => cartContents.concat(cartItem));
@@ -30,15 +32,16 @@ const DisplayCart = () => {
 
   useEffect(() => {
     console.log(cartContents.length);
-    if (cartContents.length) {
+    if (cartContents.length > 0) {
       setCartEmpty(false);
+      console.log('set cart empty false');
     }
   }, [cartContents])
 
   useEffect(() => {
     console.log('place in local storage');
     localStorage.setItem('mySavedCart', JSON.stringify(cartContents));
-  },[cartContents])
+  }, [cartContents])
 
   function calculatePrice(basePrice, baseQuantity) {
     const price1 = parseInt(basePrice) * parseInt(baseQuantity);
@@ -68,6 +71,7 @@ const DisplayCart = () => {
   }
 
   const onHandleChange = (event) => {
+    console.log('on handle change');
     event.preventDefault();  
     let newQuantity = event.target.value;
     setCartItem({
@@ -82,6 +86,9 @@ const DisplayCart = () => {
 
   const increaseQuantity = (event) => {
     event.preventDefault();
+    console.log('increase quantity');
+    console.log(cartItem.quantity);
+    console.log(cartItem);
     let newQuantity = cartItem.quantity;
     newQuantity++;
     setCartItem({
@@ -95,6 +102,7 @@ const DisplayCart = () => {
   }
 
   const decreaseQuantity = (event) => {
+    console.log('decrease quantity');
     event.preventDefault();
     let newQuantity = cartItem.quantity;
     if (newQuantity > 0) {
@@ -111,6 +119,7 @@ const DisplayCart = () => {
   }
 
   console.log(cartEmpty);
+  console.log(cartContents);
 
   return (
     <div className = 'cart-contents'>
@@ -127,8 +136,11 @@ const DisplayCart = () => {
         <div className = 'column'>Quantity</div>
         <div className = 'column'>Total Price</div>
       </h3>
+      {console.log(cartContents)}
       {cartContents.map(((cartItem) => (
         <h3 className = 'row' key = {cartItem.id}>
+          {console.log('rendered cart')}
+          {console.log(cartItem)}
           <div className = 'column'><img src = {cartItem.images} alt = {cartItem.name} className = 'cart-item'></img></div>
           <div className = 'column'>{cartItem.name}</div>
           <div className = 'column'>${formattedPrice(cartItem.price)}</div> 

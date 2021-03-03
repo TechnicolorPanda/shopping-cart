@@ -60,7 +60,7 @@
     float: right;
     max-width: 70px;
     position: absolute;
-    right: 3.2em;
+    right: 4.0em;
     top: 0em;
     content: attr(data-count);
     font-size: 14px;

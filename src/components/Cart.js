@@ -30,7 +30,9 @@ function Cart() {
 
   return (
     <div>
-      <DisplayCart/>
+      <DisplayCart
+        cartItems = {cartItem}
+      />
     </div>
   );
 }
