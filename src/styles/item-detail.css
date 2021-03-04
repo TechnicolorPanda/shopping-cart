@@ -4,7 +4,7 @@ body {
 
 div.item-selection {
     top: 102px;
-    position: absolute;
+    position: static;
 }
  
 img.item-detail {

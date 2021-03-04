@@ -4,20 +4,19 @@ body {
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
-    position: absolute;
-    top: 102p
+    position: static;
+    top: 102px;
 } 
  
-h1.shop-title {
+h2.shop-heading {
     position: absolute;
     text-align: center;
     line-height: 2;
     font-family: 'Courier New', garamond, sans-serif;
-    font-size: 48px;
+    font-size: 30px;
     color: rgb(27, 27, 27);
     text-decoration: none;
     text-decoration-line: none;
-    text-shadow: 0 0 6px white, 0 0 6px whitesmoke;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
@@ -27,6 +26,8 @@ h1.shop-title {
     border-width: 2px;
     border-color: #ccc;
     border-radius: 0%;
+    top: 0px;
+    padding: 0rem;
 }
 
 img.item {

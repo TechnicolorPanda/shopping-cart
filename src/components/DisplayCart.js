@@ -21,8 +21,12 @@ const DisplayCart = (props) => {
     if (cartItem.name === '') {
     console.log('no item');
   } else {
-      setCartContents(cartContents => cartContents.concat(cartItem));
-    }
+      let newArray = cartContents.concat(cartItem);
+      console.log(newArray);
+      newArray = new Map([...newArray.map(cartItem => [cartItem.id, cartItem.name])]);
+      console.log(newArray);
+  }
+    
   },[cartItem])
 
   useEffect(() => {

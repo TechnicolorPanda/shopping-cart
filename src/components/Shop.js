@@ -13,7 +13,7 @@ function Shop() {
 
   return (
     <div className = 'content'>
-      <h2>Would you like to buy a bridge?</h2>
+      <h2 className = 'shop-heading'>Would you like to buy a bridge?</h2>
       <div className = 'row'>
         {items.item.map((item => ( 
           <div className = 'column' key = {item.id}>

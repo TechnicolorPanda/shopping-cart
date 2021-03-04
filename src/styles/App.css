@@ -2,6 +2,11 @@ body {
   background-color: #333333;
 }
 
+.content {
+  top: 102px;
+  position: static;
+}
+
 .App {
   text-align: center;
 }

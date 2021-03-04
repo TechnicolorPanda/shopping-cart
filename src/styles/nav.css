@@ -1,41 +1,53 @@
 
-  nav {
+  ul.nav-links {
     background-color: #5d5d5d;
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 0;
-  }
-
-  ul {
+    margin-top: 0px;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #5d5d5d;
-  }
+    padding-inline-start: 0px;
+  } 
+  
 
   li.logo {
       float: left;
+      padding: 1.0em;
+      padding-left: 2.5em;
   }
 
   li.shop {
-      float: right;
-      padding-top: 2.5em;
-  }
-
-  li.cart {
-    float: right;
-    max-width: 70px;
-    height: 70px;
-}
-
-  li {    
+    position: relative;
     display: block;
     color: black;
+    font-weight: bold;
+    font-size: larger;
+    float: right;
+    padding: 2.5em;
+    margin-right: 5em;
     text-align: center;
-    padding: 16px;
-    text-decoration: none;
+    text-decoration: none; 
   }
+ 
+  li.cart {
+    position: absolute;
+    display: block;
+    color: black;
+    float: right;
+    max-width: 70px;
+    height: 2.5em;
+    padding-top: 2.8em;
+    right: 2.8em;
+  } 
+
+  .svg-inline--fa {
+    height: 1.5em;
+    width: auto;
+  } 
+
+  .svg-inline--fa.fa-w-18 {
+    width: auto;
+  } 
   
   li:hover {
     background-color: #111111;
@@ -47,34 +59,24 @@
       height: 70px;
   }
 
-  .svg-inline--fa {
-    height: 1.5em;
-  }
 
-  .svg-inline--fa.fa-w-18 {
-    width: 1.5em;
-    padding-top: 1.5em;
-  }
 
   .item-count {
-    float: right;
-    max-width: 70px;
-    position: absolute;
-    right: 4.0em;
-    top: 0em;
+    float: none;
+    position: relative;
+    aspect-ratio: 1/1;
+    width: 20px;
+    height: 20px;
+    top: -1em;
+    right: .5em;
     content: attr(data-count);
     font-size: 14px;
     font-weight: bold;
-    padding-top: 1.9em;
-    border-radius:999px;
-    line-height:.75em;
+    border-radius: 50%;
     color: rgb(168, 208, 253);
-    border: transparent;
-    margin-right: 1.5em;
-    margin-top: .7em;
+    border: white 2px;
+    padding: 2px;
     text-align: center;
-    min-width: 2em;
     background: rbga(0,0,0,0);
     border-style: solid;
   }
-

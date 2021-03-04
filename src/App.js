@@ -13,15 +13,19 @@ function App() {
   return (
     <Router>
       <div className = 'App'>
-        <Nav/>
-        <Switch>
-          <Route path = '/' exact component = {Home} />
-          <Route path = '/cart' component = {Cart}/>
-          <Route path = '/display-cart' component = {DisplayCart}/>
-          <Route path = '/shop' exact component = {Shop}/>
-          <Route path = '/shop/:id' component = {ItemDetail}/>
-          <Route path = '/checkout' component = {Checkout}/>
-        </Switch>
+        <div className = 'navbar'>
+          <Nav/>
+        </div>
+        <div className = 'content'>
+          <Switch>
+            <Route path = '/' exact component = {Home} />
+            <Route path = '/cart' component = {Cart}/>
+            <Route path = '/display-cart' component = {DisplayCart}/>
+            <Route path = '/shop' exact component = {Shop}/>
+            <Route path = '/shop/:id' component = {ItemDetail}/>
+            <Route path = '/checkout' component = {Checkout}/>
+          </Switch>
+        </div>
       </div>
     </Router>
   );
