@@ -8,8 +8,8 @@ div.item-selection {
 }
  
 img.item-detail {
-    height: 20rem;
-    max-width: 20rem;
+    height: 12rem;
+    max-width: 12rem;
     border-style: solid;
     border-color: black;
     border-width: 2px;

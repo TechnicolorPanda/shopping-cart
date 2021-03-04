@@ -43,7 +43,7 @@ function ItemDetail({ match }) {
   <div className = 'item-selection'>
     {displayItems 
     ? <div className = 'column'>
-      <div><img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img></div>
+      <div><img className = 'item-detail' src = {'./.' + itemDetails.images} alt = {itemDetails.name}></img></div>
       <h2>{itemDetails.name}</h2>
       <h3 className = 'description'>{itemDetails.description}</h3>
       <h2>${formattedPrice(itemDetails.price)}</h2>
