@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/nav.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,14 @@ function Nav(props) {
   const {
     totalQuantity
   } = props;
+
+  const [cartItem, setCartItem] = useState({
+    quantity: '', 
+    name: '', 
+    price: '',
+    id: '',
+    images: '',
+  });
 
     const logo = ('../images/logo.png');
     const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />

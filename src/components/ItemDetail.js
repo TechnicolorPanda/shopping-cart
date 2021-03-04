@@ -35,8 +35,6 @@ function ItemDetail({ match }) {
     }
   }
 
-  //TODO: pass cartContents to Cart
-
   function formattedPrice(rawPrice) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -45,7 +43,7 @@ function ItemDetail({ match }) {
   <div className = 'item-selection'>
     {displayItems 
     ? <div className = 'column'>
-      <img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img>
+      <div><img src = {itemDetails.images} alt = {itemDetails.name} className = 'item-detail'></img></div>
       <h2>{itemDetails.name}</h2>
       <h3 className = 'description'>{itemDetails.description}</h3>
       <h2>${formattedPrice(itemDetails.price)}</h2>
