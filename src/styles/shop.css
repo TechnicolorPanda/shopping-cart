@@ -9,7 +9,7 @@ body {
 } 
  
 h2.shop-heading {
-    position: absolute;
+    position: relative;
     text-align: center;
     line-height: 2;
     font-family: 'Courier New', garamond, sans-serif;
@@ -19,7 +19,7 @@ h2.shop-heading {
     text-decoration-line: none;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0px;
+    margin-top: 2em;
     margin-bottom: 0px;
     width: 100%;
     border-style: none;
@@ -28,11 +28,12 @@ h2.shop-heading {
     border-radius: 0%;
     top: 0px;
     padding: 0rem;
+    padding-top: 1em;
 }
 
 img.item {
-    height: 20rem;
-    max-width: 20rem;
+    height: 12rem;
+    max-width: 12rem;
     border-style: solid;
     border-color: black;
     border-width: 2px;

@@ -8,6 +8,8 @@ div.item-selection {
 }
  
 img.item-detail {
+    position: relative;
+    margin-top: 2em;
     height: 12rem;
     max-width: 12rem;
     border-style: solid;

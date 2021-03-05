@@ -17,17 +17,45 @@ const DisplayCart = (props) => {
   );
   const [cartEmpty, setCartEmpty] = useState(true);
 
+  // if the new item is the same as item in the cart then add quantities
+
+  function updateQuantity() {
+    let newQuantity;
+    for(let i = 0; i < cartContents.length; i++) {
+      if(cartItems.id === cartContents[i].id) {
+        newQuantity = cartItems.quantity + cartContents[i].quantity;
+        console.log(newQuantity);
+        return newQuantity;
+      }
+    }
+  }
+
+  function checkUniqueness(proposedCart) {
+    console.log(proposedCart);
+    const newArray = [...new Set(proposedCart.map(cartItem => cartItem.id))];
+    console.log(...newArray);
+    console.log([...newArray].length);
+    console.log(proposedCart.length);
+    return [...newArray].length === proposedCart.length;
+  }
+
   useEffect(() => {
     if (cartItem.name === '') {
-    console.log('no item');
-  } else {
-      let newArray = cartContents.concat(cartItem);
-      console.log(newArray);
-      newArray = new Map([...newArray.map(cartItem => [cartItem.id, cartItem.name])]);
-      console.log(newArray);
-  }
-    
+      console.log('no item');
+    } else {
+      let newQuantity = updateQuantity();
+      console.log(newQuantity);
+      let proposedCart = cartContents.concat(cartItem);
+      let uniqueItem = checkUniqueness(proposedCart);
+      if(uniqueItem) {
+        setCartContents(proposedCart);
+      } else {
+        console.log('update quantity');
+      }
+    }
   },[cartItem])
+
+  console.log(cartContents);
 
   useEffect(() => {
     if (cartContents.length > 0) {
@@ -170,4 +198,4 @@ const DisplayCart = (props) => {
   );
 }
 
-  export default DisplayCart;
+export default DisplayCart;

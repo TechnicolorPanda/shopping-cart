@@ -17,6 +17,10 @@ div.cart-contents {
     top: 102px;
     position: static;
 } 
+
+div.content {
+    position: static;
+}
  
 img.cart-item {
     height: 3rem;

@@ -1,4 +1,8 @@
-  
+body {
+    position: static;
+    top: 0px;
+}  
+
 h1 {
     position: relative;
     text-align: center;
@@ -67,8 +71,9 @@ button.shop:hover {
     margin-top: 0px;
     margin-bottom: 0px;
     background-color: #333333;
-    padding-right: 3rem;
-    padding-top: 2rem;
-    position: absolute;
-    top: 102px;
+    padding: 3rem;
+    position: relative;
+    float: none;
+    top: 0px;
+    right: 0px;
 }
