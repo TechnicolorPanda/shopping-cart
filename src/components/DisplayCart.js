@@ -40,13 +40,15 @@ const DisplayCart = (props) => {
   }
 
   useEffect(() => {
+    let proposedCart = [];
     if (cartItem.name === '') {
       console.log('no item');
     } else {
       let newQuantity = updateQuantity();
       console.log(newQuantity);
-      let proposedCart = cartContents.concat(cartItem);
+      proposedCart = cartContents.concat(cartItem);
       let uniqueItem = checkUniqueness(proposedCart);
+      console.log(uniqueItem);
       if(uniqueItem) {
         setCartContents(proposedCart);
       } else {
