@@ -15,23 +15,11 @@ function Cart() {
     id: location.state.itemDetails.id,
     images: location.state.itemDetails.images,
   });
-  // const [cartContents, setCartContents] = useState(
-  //   JSON.parse(localStorage.getItem('mySavedCart')) || []
-  // );
-  
-  // useEffect(() => {
-  //   setCartContents(cartContents => cartContents.concat(cartItem));
-  // },[cartItem])
-
-  // useEffect(() => {
-  //   console.log('place in local storage');
-  //   localStorage.setItem('mySavedCart', JSON.stringify(cartContents));
-  // },[cartContents])
 
   return (
     <div>
       <DisplayCart
-        cartItems = {cartItem}
+        newCartItem = {cartItem}
       />
     </div>
   );

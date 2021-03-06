@@ -4,13 +4,13 @@ import Nav from './Nav';
 
 const DisplayCart = (props) => {
 
-  const {cartItems} = props;
+  const {newCartItem} = props;
   const [cartItem, setCartItem] = useState({
-    quantity: cartItems.quantity, 
-    name: cartItems.name, 
-    price: cartItems.price,
-    id: cartItems.id,
-    images: cartItems.images,
+    quantity: newCartItem.quantity, 
+    name: newCartItem.name, 
+    price: newCartItem.price,
+    id: newCartItem.id,
+    images: newCartItem.images,
   });
   const [cartContents, setCartContents] = useState(
     JSON.parse(localStorage.getItem('mySavedCart')) || []
@@ -22,22 +22,42 @@ const DisplayCart = (props) => {
   function updateQuantity() {
     let newQuantity;
     for(let i = 0; i < cartContents.length; i++) {
-      if(cartItems.id === cartContents[i].id) {
-        newQuantity = cartItems.quantity + cartContents[i].quantity;
-        console.log(newQuantity);
+      if(newCartItem.id === cartContents[i].id) {
+        newQuantity = newCartItem.quantity + cartContents[i].quantity;
         return newQuantity;
       }
     }
   }
 
+  // checks new cart item to see if the item currently exists in the cart
+
   function checkUniqueness(proposedCart) {
-    console.log(proposedCart);
     const newArray = [...new Set(proposedCart.map(cartItem => cartItem.id))];
-    console.log(...newArray);
-    console.log([...newArray].length);
-    console.log(proposedCart.length);
     return [...newArray].length === proposedCart.length;
   }
+
+  // creates duplicate item with the quantity sum to be added to the cart
+
+  const displayNewQuantity = (matchingItem, newQuantity) => {
+
+    const newUpdateQuantity = ({
+      quantity: newQuantity, 
+      name: matchingItem.name, 
+      price: matchingItem.price,
+      id: matchingItem.id,
+      images: matchingItem.images,
+    });
+    return newUpdateQuantity;
+  }
+
+  // removes item with old quantity from the cart
+
+  const deleteOldItem = (newItemId) => {
+    const items = cartContents.filter(cartItem => cartItem.id !== newItemId);
+    setCartContents(items);
+  }
+
+  // when item is added to cart, the hook will decide what to do with the item
 
   useEffect(() => {
     let proposedCart = [];
@@ -45,19 +65,27 @@ const DisplayCart = (props) => {
       console.log('no item');
     } else {
       let newQuantity = updateQuantity();
-      console.log(newQuantity);
       proposedCart = cartContents.concat(cartItem);
+
+      // addition to cart is based upon whether the item currently exists in the cart
+      // quantity of items will be added if item already exists in cart 
+      // and old items will be deleted
+
       let uniqueItem = checkUniqueness(proposedCart);
-      console.log(uniqueItem);
       if(uniqueItem) {
         setCartContents(proposedCart);
       } else {
-        console.log('update quantity');
+        let newItemId = newCartItem.id;
+        let matchingItem = cartContents.find((element) => {
+          return element.id === newItemId;
+        })
+        deleteOldItem(newItemId);
+        setCartContents(cartContents => cartContents.concat(displayNewQuantity(matchingItem, newQuantity)));
       }
     }
   },[cartItem])
 
-  console.log(cartContents);
+  // determines whether cart is empty or contains item
 
   useEffect(() => {
     if (cartContents.length > 0) {
@@ -65,9 +93,13 @@ const DisplayCart = (props) => {
     }
   }, [cartContents])
 
+  // places cart contents in local storage
+
   useEffect(() => {
     localStorage.setItem('mySavedCart', JSON.stringify(cartContents));
   }, [cartContents])
+
+  // calculates price of item using price times quantity
 
   function calculatePrice(basePrice, baseQuantity) {
     const price1 = basePrice * baseQuantity;
@@ -75,18 +107,21 @@ const DisplayCart = (props) => {
     return price;
   }
 
+  // adds comas every three digits to longer numbers 
+
   function formattedPrice(rawPrice) {
     let price = parseFloat(rawPrice);
     price = price.toFixed(2);
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  // adds item prices for total cost
+
   function totalCost(cartContents) {
     let total = 0;
     cartContents.map((cartItem => (
       total = parseFloat(calculatePrice(cartItem.price, cartItem.quantity)) + parseFloat(total)
     )));
-    console.log(total);
     let grandTotal = formattedPrice(total);
     return grandTotal;
   }
@@ -98,6 +133,8 @@ const DisplayCart = (props) => {
     )));
     return numberOfItems;
   }
+
+  // updates number of items when a new quantity is typed in
 
   const onHandleChange = (event) => {
     console.log('on handle change');
@@ -113,7 +150,12 @@ const DisplayCart = (props) => {
     setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
   }
 
+  // handles quantity increase when plus button is selected
+
   const increaseQuantity = (event) => {
+
+    // TODO: fix cart increase function so items are not deleted
+
     event.preventDefault();
     let newQuantity = cartItem.quantity;
     newQuantity++;
@@ -128,6 +170,8 @@ const DisplayCart = (props) => {
     console.log(cartContents.indexOf(cartItem));
     setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
   }
+
+  // handles quantity decrease when minus button is selected
 
   const decreaseQuantity = (event) => {
     console.log('decrease quantity');
