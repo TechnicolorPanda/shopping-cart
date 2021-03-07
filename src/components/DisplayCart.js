@@ -122,17 +122,16 @@ const DisplayCart = (props) => {
     return grandTotal;
   }
 
+  // changes quantity in cart maintaining order of cart items
+
   const changeQuantity = (newQuantity, newItemId) => {
     let matchingItem = cartContents.find((element) => {
       return (element.id === parseInt(newItemId))
     })
-
     let identifyElement = cartContents.find((element) => {
       return (element.id === parseInt(newItemId))
     })
-
     let indexOfElement = cartContents.indexOf(identifyElement);
-    console.log(indexOfElement);
   
     const proposedCartItem = ({
       quantity: newQuantity, 
@@ -141,6 +140,7 @@ const DisplayCart = (props) => {
       id: matchingItem.id,
       images: matchingItem.images,
     });
+
     setCartContents(cartContents => cartContents.filter(cartItem => cartItem.id !== newItemId));
     const left = cartContents.slice(0, indexOfElement);
     const right = cartContents.slice(indexOfElement + 1);
@@ -159,38 +159,19 @@ const DisplayCart = (props) => {
   // handles quantity increase when plus button is selected
 
   const increaseQuantity = (event) => {
-
-    // TODO: fix cart increase function so items are not deleted
-
-    event.preventDefault();
-    let newQuantity = cartItem.quantity;
-    newQuantity++;
-    setCartItem({
-      quantity: newQuantity, 
-      name: cartItem.name, 
-      price: cartItem.price,
-      id: cartItem.id,
-      images: cartItem.images,
-    });
-    setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
+    event.preventDefault();  
+    let newQuantity = parseInt(event.target.value) + 1;
+    let newItemId = event.target.getAttribute('id');
+    changeQuantity(newQuantity, newItemId);
   }
 
   // handles quantity decrease when minus button is selected
 
   const decreaseQuantity = (event) => {
-    event.preventDefault();
-    let newQuantity = cartItem.quantity;
-    if (newQuantity > 0) {
-      newQuantity--;
-    };
-    setCartItem({
-      quantity: newQuantity, 
-      name: cartItem.name, 
-      price: cartItem.price,
-      id: cartItem.id,
-      images: cartItem.images,
-    });
-    setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
+    event.preventDefault();  
+    let newQuantity = parseInt(event.target.value) - 1;
+    let newItemId = event.target.getAttribute('id');
+    changeQuantity(newQuantity, newItemId);
   }
 
   function numberOfItems(cartContents) {
@@ -222,14 +203,22 @@ const DisplayCart = (props) => {
           <div className = 'column'>{cartItem.name}</div>
           <div className = 'column'>${formattedPrice(cartItem.price)}</div> 
           <div className = 'column'>
-            <button id = 'decrease' onClick = {decreaseQuantity}>-</button>
+            <button
+              className = 'decrease'     
+              value = {cartItem.quantity}
+              id = {cartItem.id} 
+              onClick = {decreaseQuantity}>-</button>
             <input  
               value = {cartItem.quantity}
               id = {cartItem.id}
               onFocus = {(e) => e.target.value = ''} 
               onChange = {onHandleChange}>
             </input>
-            <button id = 'increase' onClick = {increaseQuantity}>+</button>
+            <button 
+              className = 'increase' 
+              value = {cartItem.quantity}
+              id = {cartItem.id}
+              onClick = {increaseQuantity}>+</button>
           </div>
           <div className = 'column'>${formattedPrice(calculatePrice(cartItem.price, cartItem.quantity))}</div>
         </h3>

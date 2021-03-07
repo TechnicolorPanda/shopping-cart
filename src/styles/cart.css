@@ -70,7 +70,7 @@ h3#categories.row {
       text-align: center;
   }
 
-  button#increase, button#decrease {
+  button.increase, button.decrease {
       width: 1.5em;
       height: 1.5em;
       font-size: 18px;
