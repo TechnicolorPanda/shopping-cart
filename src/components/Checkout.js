@@ -1,10 +1,12 @@
 import React from 'react';
 import '../styles/checkout.css';
+import CartCounter from './CartCounter';
 
 function Checkout() {
 
   return(
     <div>
+      <CartCounter/>
       <h2 className = 'checkout'>Checkout</h2>
       <h3 className = 'checkout'>Don't be scammed! You can not buy a bridge on the Internet!</h3>
       <h4 className = 'checkout'>George C. Parker was born in New York City in 1860. 

@@ -1,27 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/home.css';
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
+import CartCounter from './CartCounter';
 
 const Home = () => {
 
-  const [cartContents, setCartContents] = useState(
-    JSON.parse(localStorage.getItem('mySavedCart')) || []
-  );
-
-  function numberOfItems(cartContents) {
-    let numberOfItems = 0;
-    cartContents.map((cartItem => (
-      numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
-    )));
-    return numberOfItems;
-  }
-
   return (
     <div>
-      <Nav
-        totalQuantity = {numberOfItems(cartContents)}
-      />
+      <CartCounter/>
     <div className = 'background'>
       <h1>George C. Parker's 
           <br/>

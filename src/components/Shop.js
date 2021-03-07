@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/shop.css';
 import { Link } from 'react-router-dom';
 import ShopItems from './ShopItems';
-import Nav from './Nav';
+import CartCounter from './CartCounter';
 
 function Shop() {
 
   const items = ShopItems;
-  const [cartContents, setCartContents] = useState(
-    JSON.parse(localStorage.getItem('mySavedCart')) || []
-  );
-
-  function numberOfItems(cartContents) {
-    let numberOfItems = 0;
-    cartContents.map((cartItem => (
-      numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
-    )));
-    return numberOfItems;
-  }
 
   function formattedPrice(rawPrice) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -25,9 +14,7 @@ function Shop() {
 
   return (
     <div className = 'content'>
-      <Nav
-        totalQuantity = {numberOfItems(cartContents)}
-      />
+      <CartCounter/>
       <h2 className = 'shop-heading'>Would you like to buy a bridge?</h2>
       <div className = 'row'>
         {items.item.map((item => ( 

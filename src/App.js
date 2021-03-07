@@ -15,18 +15,6 @@ function App() {
     JSON.parse(localStorage.getItem('mySavedCart')) || []
   );
 
-  // function numberOfItems(cartContents) {
-
-  //   console.log('calculate quantity');
-  //   let numberOfItems = 0;
-  //   cartContents.map((cartItem => (
-  //     numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
-  //   )));
-  //   console.log(cartContents);
-  //   console.log(numberOfItems);
-  //   return numberOfItems;
-  // }
-
   return (
     <Router>
       <div className = 'App'>
