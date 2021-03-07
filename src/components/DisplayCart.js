@@ -20,7 +20,6 @@ const DisplayCart = (props) => {
   // if the new item is the same as item in the cart then add quantities
 
   function updateQuantity() {
-    let newQuantity;
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
         return (parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity));
@@ -51,8 +50,7 @@ const DisplayCart = (props) => {
   // removes item with old quantity from the cart
 
   const deleteOldItem = (newItemId) => {
-    const items = cartContents.filter(cartItem => cartItem.id !== newItemId);
-    setCartContents(items);
+    setCartContents(cartContents => cartContents.filter(cartItem => cartItem.id !== newItemId));
   }
 
   // when item is added to cart, the hook will decide what to do with the item
@@ -124,26 +122,17 @@ const DisplayCart = (props) => {
     return grandTotal;
   }
 
-  // updates number of items when a new quantity is typed in
-
-  const onHandleChange = (event) => {
-    event.preventDefault();  
-    let newQuantity = parseInt(event.target.value);
-    let newItemId = event.target.getAttribute('id');
+  const changeQuantity = (newQuantity, newItemId) => {
     let matchingItem = cartContents.find((element) => {
       return (element.id === parseInt(newItemId))
     })
 
-    // let indexOfElement = cartContents.find((element) => {
-    //   if (element.id === parseInt(newItemId)) {
-    //     return cartContents.indexOf(element)
-    //   }
-    // }
+    let identifyElement = cartContents.find((element) => {
+      return (element.id === parseInt(newItemId))
+    })
 
-    // console.log(indexOfElement);
-    // splice new item into index at index returned
-    // cartContents.splice(indexOfElement, 0, 'proposedCartItem)
-    // )
+    let indexOfElement = cartContents.indexOf(identifyElement);
+    console.log(indexOfElement);
   
     const proposedCartItem = ({
       quantity: newQuantity, 
@@ -152,9 +141,19 @@ const DisplayCart = (props) => {
       id: matchingItem.id,
       images: matchingItem.images,
     });
-    deleteOldItem(proposedCartItem.id);
-    // setCartContents(cartContents => cartContents.splice(indexOfElement, 0, 'proposedCartItem))
-    setCartContents(cartContents => cartContents.concat(proposedCartItem));
+    setCartContents(cartContents => cartContents.filter(cartItem => cartItem.id !== newItemId));
+    const left = cartContents.slice(0, indexOfElement);
+    const right = cartContents.slice(indexOfElement + 1);
+    setCartContents(left.concat(proposedCartItem, right));
+  }
+
+  // updates number of items when a new quantity is typed in
+
+  const onHandleChange = (event) => {
+    event.preventDefault();  
+    let newQuantity = parseInt(event.target.value);
+    let newItemId = event.target.getAttribute('id');
+    changeQuantity(newQuantity, newItemId);
   }
 
   // handles quantity increase when plus button is selected
