@@ -169,7 +169,12 @@ const DisplayCart = (props) => {
 
   const decreaseQuantity = (event) => {
     event.preventDefault();  
-    let newQuantity = parseInt(event.target.value) - 1;
+    let newQuantity = parseInt(event.target.value);
+    if (newQuantity > 0) {
+      newQuantity--;
+    } else {
+      newQuantity = 0;
+    }
     let newItemId = event.target.getAttribute('id');
     changeQuantity(newQuantity, newItemId);
   }
