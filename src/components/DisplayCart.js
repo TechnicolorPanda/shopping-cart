@@ -23,8 +23,7 @@ const DisplayCart = (props) => {
     let newQuantity;
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
-        newQuantity = parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity);
-        return newQuantity;
+        return (parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity));
       }
     }
   }
@@ -39,7 +38,6 @@ const DisplayCart = (props) => {
   // creates duplicate item with the quantity sum to be added to the cart
 
   const displayNewQuantity = (matchingItem, newQuantity) => {
-
     const newUpdateQuantity = ({
       quantity: newQuantity, 
       name: matchingItem.name, 
@@ -77,7 +75,7 @@ const DisplayCart = (props) => {
       } else {
         let newItemId = newCartItem.id;
         let matchingItem = cartContents.find((element) => {
-          return element.id === newItemId;
+          return (element.id === newItemId);
         })
         deleteOldItem(newItemId);
         setCartContents(cartContents => cartContents.concat(displayNewQuantity(matchingItem, newQuantity)));
@@ -129,17 +127,34 @@ const DisplayCart = (props) => {
   // updates number of items when a new quantity is typed in
 
   const onHandleChange = (event) => {
-    console.log('on handle change');
     event.preventDefault();  
-    let newQuantity = event.target.value;
-    setCartItem({
+    let newQuantity = parseInt(event.target.value);
+    let newItemId = event.target.getAttribute('id');
+    let matchingItem = cartContents.find((element) => {
+      return (element.id === parseInt(newItemId))
+    })
+
+    // let indexOfElement = cartContents.find((element) => {
+    //   if (element.id === parseInt(newItemId)) {
+    //     return cartContents.indexOf(element)
+    //   }
+    // }
+
+    // console.log(indexOfElement);
+    // splice new item into index at index returned
+    // cartContents.splice(indexOfElement, 0, 'proposedCartItem)
+    // )
+  
+    const proposedCartItem = ({
       quantity: newQuantity, 
-      name: cartItem.name, 
-      price: cartItem.price,
-      id: cartItem.id,
-      images: cartItem.images,
+      name: matchingItem.name, 
+      price: matchingItem.price,
+      id: matchingItem.id,
+      images: matchingItem.images,
     });
-    setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
+    deleteOldItem(proposedCartItem.id);
+    // setCartContents(cartContents => cartContents.splice(indexOfElement, 0, 'proposedCartItem))
+    setCartContents(cartContents => cartContents.concat(proposedCartItem));
   }
 
   // handles quantity increase when plus button is selected
@@ -158,15 +173,12 @@ const DisplayCart = (props) => {
       id: cartItem.id,
       images: cartItem.images,
     });
-    console.log(cartContents);
-    console.log(cartContents.indexOf(cartItem));
     setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
   }
 
   // handles quantity decrease when minus button is selected
 
   const decreaseQuantity = (event) => {
-    console.log('decrease quantity');
     event.preventDefault();
     let newQuantity = cartItem.quantity;
     if (newQuantity > 0) {
@@ -183,14 +195,10 @@ const DisplayCart = (props) => {
   }
 
   function numberOfItems(cartContents) {
-
-    console.log('calculate quantity');
     let numberOfItems = 0;
     cartContents.map((cartItem => (
       numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
     )));
-    console.log(cartContents);
-    console.log(numberOfItems);
     return numberOfItems;
   }
 
@@ -218,6 +226,7 @@ const DisplayCart = (props) => {
             <button id = 'decrease' onClick = {decreaseQuantity}>-</button>
             <input  
               value = {cartItem.quantity}
+              id = {cartItem.id}
               onFocus = {(e) => e.target.value = ''} 
               onChange = {onHandleChange}>
             </input>
