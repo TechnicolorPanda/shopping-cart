@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/App.css';
 import Home from './components/Home';
 import Nav from './components/Nav';
@@ -10,11 +10,30 @@ import Checkout from './components/Checkout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
+
+  const [cartContents, setCartContents] = useState(
+    JSON.parse(localStorage.getItem('mySavedCart')) || []
+  );
+
+  // function numberOfItems(cartContents) {
+
+  //   console.log('calculate quantity');
+  //   let numberOfItems = 0;
+  //   cartContents.map((cartItem => (
+  //     numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
+  //   )));
+  //   console.log(cartContents);
+  //   console.log(numberOfItems);
+  //   return numberOfItems;
+  // }
+
   return (
     <Router>
       <div className = 'App'>
         <div className = 'navbar'>
-          <Nav/>
+          <Nav
+            // totalQuantity = {numberOfItems(cartContents)}
+          />
         </div>
         <div className = 'content'>
           <Switch>

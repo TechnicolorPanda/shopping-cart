@@ -10,16 +10,8 @@ function Nav(props) {
     totalQuantity
   } = props;
 
-  const [cartItem, setCartItem] = useState({
-    quantity: '', 
-    name: '', 
-    price: '',
-    id: '',
-    images: '',
-  });
-
-    const logo = ('../images/logo.png');
-    const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
+  const logo = ('../images/logo.png');
+  const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
 
   return (
     <nav>

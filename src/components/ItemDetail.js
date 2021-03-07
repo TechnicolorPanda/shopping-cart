@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/item-detail.css';
 import ShopItems from './ShopItems';
 import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 function ItemDetail({ match }) {
 
@@ -9,6 +10,18 @@ function ItemDetail({ match }) {
   const [displayedItem, setDisplayedItem] = useState(parseInt(match.params.id));
   const [displayItems, setDisplayItems] = useState(false);
   const [quantity, setQuantity] = useState(1);
+
+  const [cartContents, setCartContents] = useState(
+    JSON.parse(localStorage.getItem('mySavedCart')) || []
+  );
+
+  function numberOfItems(cartContents) {
+    let numberOfItems = 0;
+    cartContents.map((cartItem => (
+      numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
+    )));
+    return numberOfItems;
+  }
 
   useEffect(() => {
     const matchingItem = [ShopItems];
@@ -64,7 +77,9 @@ function ItemDetail({ match }) {
       </div>
     </div>
     : null}
-
+    <Nav
+      totalQuantity = {numberOfItems(cartContents)}
+    />
   </div>
   );
 }

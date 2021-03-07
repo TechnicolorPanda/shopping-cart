@@ -23,7 +23,7 @@ const DisplayCart = (props) => {
     let newQuantity;
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
-        newQuantity = newCartItem.quantity + cartContents[i].quantity;
+        newQuantity = parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity);
         return newQuantity;
       }
     }
@@ -126,14 +126,6 @@ const DisplayCart = (props) => {
     return grandTotal;
   }
 
-  function numberOfItems(cartContents) {
-    let numberOfItems = 0;
-    cartContents.map((cartItem => (
-      numberOfItems = numberOfItems + cartItem.quantity
-    )));
-    return numberOfItems;
-  }
-
   // updates number of items when a new quantity is typed in
 
   const onHandleChange = (event) => {
@@ -190,6 +182,18 @@ const DisplayCart = (props) => {
     setCartContents(cartContents => cartContents.filter((cartItem, i) => cartContents.indexOf(cartItem) !== i));
   }
 
+  function numberOfItems(cartContents) {
+
+    console.log('calculate quantity');
+    let numberOfItems = 0;
+    cartContents.map((cartItem => (
+      numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
+    )));
+    console.log(cartContents);
+    console.log(numberOfItems);
+    return numberOfItems;
+  }
+
   return (
     <div className = 'cart-contents'>
       <h2>Cart</h2>
@@ -219,16 +223,16 @@ const DisplayCart = (props) => {
             </input>
             <button id = 'increase' onClick = {increaseQuantity}>+</button>
           </div>
-          <div className = 'column'>{formattedPrice(calculatePrice(cartItem.price, cartItem.quantity))}</div>
+          <div className = 'column'>${formattedPrice(calculatePrice(cartItem.price, cartItem.quantity))}</div>
         </h3>
       )))}
       <h3 className = 'total'>Total = ${totalCost(cartContents)}</h3>
+        </div>
+      }
 
-      <Nav 
+      <Nav
         totalQuantity = {numberOfItems(cartContents)}
       />
-      </div>
-}
 
       <Link to = '/shop'>
         <button className = 'go-to-store'>
