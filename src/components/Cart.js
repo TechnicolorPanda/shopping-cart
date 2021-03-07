@@ -5,8 +5,6 @@ import '../styles/cart.css';
 
 function Cart() {
 
-  console.log('cart');
-
   const location = useLocation();
   const [cartItem, setCartItem] = useState({
     quantity: location.state.number, 

@@ -9,7 +9,8 @@ function Nav(props) {
   const {
     totalQuantity
   } = props;
-
+  const [itemDetails, setItemDetails] = useState({name: '', images: '', id: '', price: '', description: '',});
+  const [quantity, setQuantity] = useState(0);
   const logo = ('../images/logo.png');
   const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
 
@@ -24,7 +25,13 @@ function Nav(props) {
           <li className = 'shop'>Shop</li>
         </Link>
 
-        <Link to = './display-cart'>
+        <Link to = {{
+          pathname: './cart',
+          state: {
+            number: quantity,
+            itemDetails: itemDetails,
+          }
+        }}>
           <li className = 'cart'>{shoppingCart}
             <span className = 'item-count'>{totalQuantity}</span>
           </li>
