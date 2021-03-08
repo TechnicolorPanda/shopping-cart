@@ -7,17 +7,17 @@ import CartCounter from './CartCounter';
 function ItemDetail({ match }) {
 
   const [itemDetails, setItemDetails] = useState({name: '', images: '', id: '', price: '', description: '',});
-  const [displayedItem, setDisplayedItem] = useState(parseInt(match.params.id));
   const [displayItems, setDisplayItems] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
+    const displayedItem = parseInt(match.params.id);
     const matchingItem = [ShopItems];
     const shopDetail = matchingItem[0].item;
     const newItem = shopDetail.filter((shopDetail, i) => shopDetail.id === displayedItem);
     setItemDetails(newItem[0]);
     setDisplayItems(true);
-  },[displayedItem])
+  },[])
 
   const onHandleChange = (event) => {
     event.preventDefault();  

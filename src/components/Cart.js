@@ -7,14 +7,6 @@ import Nav from './Nav';
 function Cart() {
 
   const location = useLocation();
-  const [newCartItem, setNewCartItem] = useState({
-    quantity: location.state.number, 
-    name: location.state.itemDetails.name, 
-    price: location.state.itemDetails.price,
-    id: location.state.itemDetails.id,
-    images: location.state.itemDetails.images,
-  });
-
   const [cartContents, setCartContents] = useState(
     JSON.parse(localStorage.getItem('mySavedCart')) || []
   );
@@ -23,6 +15,13 @@ function Cart() {
   // if the new item is the same as item in the cart then add quantities
 
   function updateQuantity() {
+    const newCartItem = {
+      quantity: location.state.number, 
+      name: location.state.itemDetails.name, 
+      price: location.state.itemDetails.price,
+      id: location.state.itemDetails.id,
+      images: location.state.itemDetails.images,
+    };
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
         return (parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity));
@@ -74,7 +73,7 @@ function Cart() {
       if(uniqueItem) {
         setCartContents(proposedCart);
       } else {
-        let newItemId = newCartItem.id;
+        let newItemId = location.state.itemDetails.id;
         let matchingItem = cartContents.find((element) => {
           return (element.id === newItemId);
         })
@@ -82,7 +81,7 @@ function Cart() {
         setCartContents(cartContents => cartContents.concat(displayNewQuantity(matchingItem, newQuantity)));
       }
     }
-  },[newCartItem])
+  },[])
 
   // determines whether cart is empty or contains item
 
