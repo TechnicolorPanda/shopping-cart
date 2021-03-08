@@ -184,6 +184,8 @@ function Cart() {
     changeQuantity(newQuantity, newItemId);
   }
 
+  // displays total number of items for cart counter
+
   function numberOfItems(cartContents) {
     let numberOfItems = 0;
     cartContents.map((cartItem => (
