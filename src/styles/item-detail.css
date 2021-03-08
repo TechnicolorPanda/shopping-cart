@@ -1,6 +1,3 @@
-body {
-    background-color: white;
-} 
 
 div.item-selection {
     top: 102px;
@@ -17,6 +14,10 @@ img.item-detail {
     border-width: 2px;
 }
 
+h2 {
+    padding-top: 0px;
+}
+
 h3.description {
     position: relative;
     text-align: center;
@@ -28,7 +29,7 @@ h3.description {
     text-decoration-line: none;
     margin-left: 5rem;
     margin-right: 5rem;
-    margin-top: .5rem;
+    margin-top: 0px;
     margin-bottom: 0px;
     padding: .1rem;
     width: 80%;
@@ -43,27 +44,38 @@ h3.description {
     padding: 5px;
   }
 
-  input {
-      width: 1.5em;
-      height: 1.5em;
-      font-size: 14px;
-      text-align: center;
-  }
+input {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 14px;
+    text-align: center;
+}
 
-  button#increase, button#decrease {
-      width: 1.5em;
-      height: 1.5em;
-      font-size: 18px;
-      font-weight: bold;
-  }
+button#increase, button#decrease {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-  button#add-to-cart {
-    padding: 3px;
+button#add-to-cart {
+    position: relative;
+    padding: 5px;
     margin-left: 1em;
-    border: black 2px solid;
-    border-radius: 3px;
-  }
+    margin-bottom: 3rem;
+    margin-top: 20px;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 5px;
+    font-family: 'courier new', Garamond, Arial;
+    font-weight: bold;
+    font-size: 14px;
+}
 
-  button:hover {
-      background-color: rgb(137, 189, 235);
-  }
+button#add-to-cart:hover {
+  background-color:lightgrey;
+}
+
+button:hover {
+    background-color: rgb(137, 189, 235);
+}

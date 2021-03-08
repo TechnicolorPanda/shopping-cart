@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/nav.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,11 +6,9 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Nav(props) {
 
-  const {
-    totalQuantity
-  } = props;
-  const [itemDetails, setItemDetails] = useState({name: '', images: '', id: '', price: '', description: '',});
-  const [quantity, setQuantity] = useState(0);
+  const {totalQuantity} = props;
+  const itemDetails = {name: '', images: '', id: '', price: '', description: '',};
+  const quantity = 0;
   const logo = ('../images/logo.png');
   const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart} />
 

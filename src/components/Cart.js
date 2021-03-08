@@ -14,7 +14,7 @@ function Cart() {
 
   // if the new item is the same as item in the cart then add quantities
 
-  function updateQuantity() {
+  const updateQuantity = () => {
     const newCartItem = {
       quantity: location.state.number, 
       name: location.state.itemDetails.name, 
@@ -31,7 +31,7 @@ function Cart() {
 
   // checks new cart item to see if the item currently exists in the cart
 
-  function checkUniqueness(proposedCart) {
+  const checkUniqueness = (proposedCart) => {
     const newArray = [...new Set(proposedCart.map(cartItem => cartItem.id))];
     return [...newArray].length === proposedCart.length;
   }
@@ -99,7 +99,7 @@ function Cart() {
 
   // calculates price of item using price times quantity
 
-  function calculatePrice(basePrice, baseQuantity) {
+  const calculatePrice = (basePrice, baseQuantity) => {
     const price1 = basePrice * baseQuantity;
     const price = price1.toFixed(2);
     return price;
@@ -107,7 +107,7 @@ function Cart() {
 
   // adds comas every three digits to longer numbers 
 
-  function formattedPrice(rawPrice) {
+  const formattedPrice = (rawPrice) => {
     let price = parseFloat(rawPrice);
     price = price.toFixed(2);
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -115,7 +115,7 @@ function Cart() {
 
   // adds item prices for total cost
 
-  function totalCost(cartContents) {
+  const totalCost = (cartContents) => {
     let total = 0;
     cartContents.map((cartItem => (
       total = parseFloat(calculatePrice(cartItem.price, cartItem.quantity)) + parseFloat(total)
@@ -186,7 +186,7 @@ function Cart() {
 
   // displays total number of items for cart counter
 
-  function numberOfItems(cartContents) {
+  const numberOfItems = (cartContents) => {
     let numberOfItems = 0;
     cartContents.map((cartItem => (
       numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
@@ -197,7 +197,7 @@ function Cart() {
   return (
     <div className = 'cart-contents'>
       <Nav totalQuantity = {numberOfItems(cartContents)}/>
-      <h2>Cart</h2>
+      <h2 className = 'cart-title'>Cart</h2>
       {cartEmpty
         ? <div>
         <li>Your Cart is Empty</li>

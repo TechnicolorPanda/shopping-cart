@@ -8,18 +8,18 @@ const Home = () => {
   return (
     <div>
       <CartCounter/>
-    <div className = 'background'>
-      <h1>George C. Parker's 
+      <div className = 'background'>
+        <h1>George C. Parker's 
           <br/>
           Quality Bridges
-      </h1>
-      <h3 className = 'tagline'>"Every path in life has a bridge ..."</h3>
-      <Link to = {`/shop`}>
-        <button className = 'shop'>
+        </h1>
+        <h3 className = 'tagline'>"Every path in life has a bridge ..."</h3>
+        <Link to = {`/shop`}>
+          <button className = 'shop'>
             Shop Now
-        </button>
-      </Link>
-    </div>
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

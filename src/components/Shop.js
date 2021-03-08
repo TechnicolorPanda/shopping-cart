@@ -8,6 +8,8 @@ function Shop() {
 
   const items = ShopItems;
 
+  // adds comas to numbers over 1,000
+
   function formattedPrice(rawPrice) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
