@@ -63,6 +63,7 @@ function ItemDetail({ match }) {
 
   return (
   <div className = 'item-selection'>
+    <CartCounter/>
     {displayItems 
     ? <div className = 'column'>
         <div><img className = 'item-detail' src = {'./.' + itemDetails.images} alt = {itemDetails.name}></img></div>
@@ -87,7 +88,6 @@ function ItemDetail({ match }) {
         </div>
       </div>
     : null}
-    <CartCounter/>
   </div>
   );
 }

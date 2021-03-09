@@ -6,7 +6,7 @@ import Cart from './components/Cart';
 import Shop from './components/Shop';
 import ItemDetail from './components/ItemDetail';
 import Checkout from './components/Checkout';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
             <Route path = '/' exact component = {Home} />
             <Route path = '/cart' component = {Cart}/>
             <Route path = '/shop' exact component = {Shop}/>
-            <Route path = '/shop/:id' component = {ItemDetail}/>
+            <Route path = '/shop/:id' exact component = {ItemDetail}/>
             <Route path = '/checkout' component = {Checkout}/>
           </Switch>
         </div>

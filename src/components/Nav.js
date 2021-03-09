@@ -24,7 +24,7 @@ function Nav(props) {
         </Link>
 
         <Link to = {{
-          pathname: './cart',
+          pathname: '/cart',
           state: {
             number: quantity,
             itemDetails: itemDetails,

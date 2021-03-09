@@ -4,6 +4,8 @@ import Nav from './Nav';
 
 const CartCounter = () => {
 
+  // TODO: shop/cart/ = cart/
+
   // retrieves saved cart from local storage
 
   const cartContents = (
