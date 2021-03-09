@@ -20,6 +20,34 @@ const ShopItems = {
       price: '57.39',
       description: 'Connect land over small streams with a basic bridge. This is one of our newer bridge at 25 years old. The need for updating is reflected in the low price.',
     },
+
+    {name: 'Little Manatee River Bridge', 
+    images: './images/little-manatee-river.jpg', 
+    id: 3290, 
+    price: '230000',
+    description: 'This is a Warren-type simple truss bridge. With a little TLC you can transport your train over a river in style.',
+  },
+
+    {name: 'Tower Bridge',
+    images: './images/tower-bridge.jpg',
+    id: 2130,
+    price: '1644558.20',
+    description: 'This bridge has been in operation since 1886. This combined bascule and suspension bridge is sure to get you noticed.',
+  },
+
+    {name: 'Old Canal Bridge',
+    images: './images/old-bridge-on-canal.jpg',
+    id: 1256,
+    price: '9999.99',
+    description: 'Has your homeowner\'s association erected a canal through your yard? This is the perfect solution to get to the other side.',
+    },
+
+    {name: 'Mackinac Bridge',
+    images: './images/mackinaw-bridge.jpg',
+    id: 4321,
+    price: '100000000',
+    description: 'Own your own 5-mile long suspension bridge. Imagine the pride in knowing your bridge is the only thing connecting Michigan\'s two penninsulas.',
+    },
     ]
   }
 

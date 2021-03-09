@@ -14,7 +14,7 @@ function Cart() {
 
   // if the new item is the same as item in the cart then add quantities
 
-  const updateQuantity = () => {
+  const updateQuantityForDuplicates = () => {
     const newCartItem = {
       quantity: location.state.number, 
       name: location.state.itemDetails.name, 
@@ -24,8 +24,8 @@ function Cart() {
     };
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
-        return (parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity));
-      }
+        return parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity);
+      } 
     }
   }
 
@@ -62,7 +62,7 @@ function Cart() {
     if (location.state.itemDetails.name === '') {
       console.log('no item');
     } else {
-      let newQuantity = updateQuantity();
+      let newQuantity = updateQuantityForDuplicates();
       proposedCart = cartContents.concat(location.state.itemDetails);
 
       // addition to cart is based upon whether the item currently exists in the cart
