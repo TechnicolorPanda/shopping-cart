@@ -211,7 +211,7 @@ function Cart() {
         <div className = 'column'>Total Price</div>
       </h3>
       {cartContents.map(((cartItem) => (
-        <h3 className = 'row' key = {cartItem.id}>
+        <h3 className = 'row' id = 'contents' key = {cartItem.id}>
           <div className = 'column'><img src = {cartItem.images} alt = {cartItem.name} className = 'cart-item'></img></div>
           <div className = 'column'>{cartItem.name}</div>
           <div className = 'column'>${formattedPrice(cartItem.price)}</div> 

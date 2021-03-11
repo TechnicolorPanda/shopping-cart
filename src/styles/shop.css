@@ -20,7 +20,7 @@ h2.shop-heading {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2em;
-    margin-bottom: 0px;
+    margin-bottom: 1em;
     width: 100%;
     border-style: none;
     border-width: 2px;
@@ -32,19 +32,19 @@ h2.shop-heading {
 }
 
 img.item {
-    height: 12rem;
     max-width: 12rem;
     border-style: solid;
     border-color: black;
     border-width: 2px;
 }
 
-.row {
+.row#shop {
     display: flex;
+    flex-wrap: wrap;
   }
   
 .column {
-    flex: 33.33%;
+    flex: 20%;
     padding: 5px;
   }
 

@@ -48,6 +48,14 @@ const ShopItems = {
     price: '100000000',
     description: 'Own your own 5-mile long suspension bridge. Imagine the pride in knowing your bridge is the only thing connecting Michigan\'s two penninsulas.',
     },
+
+    {name: 'Covered Bridge',
+    images: './images/covered-bridge.jpg',
+    id: 1001,
+    price: '5000',
+    description: 'Cross a river in style with this old-fashioned covered bridge. You will not need to worry about getting wet while crossing this bridge in a storm.',
+    },
+
     ]
   }
 

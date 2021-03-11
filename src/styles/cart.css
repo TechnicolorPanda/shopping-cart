@@ -52,9 +52,10 @@ h3#categories.row {
     border-top: 2px solid black;
 }
 
-.row {
+.row#contents, .row#categories {
     display: flex;
-  }
+    flex-wrap: nowrap;
+}
   
 .column {
     flex: 33.33%;

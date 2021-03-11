@@ -18,7 +18,7 @@ function Shop() {
     <div className = 'content'>
       <CartCounter/>
       <h2 className = 'shop-heading'>Would you like to buy a bridge?</h2>
-      <div className = 'row'>
+      <div className = 'row' id = 'shop'>
         {items.item.map((item => ( 
           <div className = 'column' key = {item.id}>
             <Link to = {`/shop/${item.id}`}>
