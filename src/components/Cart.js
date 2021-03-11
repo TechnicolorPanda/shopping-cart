@@ -12,18 +12,21 @@ function Cart() {
   );
   const [cartEmpty, setCartEmpty] = useState(true);
 
+  console.log(location.state.number);
+
   // if the new item is the same as item in the cart then add quantities
 
-  const updateQuantityForDuplicates = () => {
-    const newCartItem = {
-      quantity: location.state.number, 
-      name: location.state.itemDetails.name, 
-      price: location.state.itemDetails.price,
-      id: location.state.itemDetails.id,
-      images: location.state.itemDetails.images,
-    };
+  const updateQuantityForDuplicates = (newCartItem) => {
+    // const newCartItem = {
+    //   quantity: location.state.number, 
+    //   name: location.state.itemDetails.name, 
+    //   price: location.state.itemDetails.price,
+    //   id: location.state.itemDetails.id,
+    //   images: location.state.itemDetails.images,
+    // };
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
+        console.log('duplicate item');
         return parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity);
       } 
     }
@@ -59,11 +62,18 @@ function Cart() {
 
   useEffect(() => {
     let proposedCart = [];
+    const newCartItem = {
+      quantity: location.state.number, 
+      name: location.state.itemDetails.name, 
+      price: location.state.itemDetails.price,
+      id: location.state.itemDetails.id,
+      images: location.state.itemDetails.images,
+    };
     if (location.state.itemDetails.name === '') {
       console.log('no item');
     } else {
-      let newQuantity = updateQuantityForDuplicates();
-      proposedCart = cartContents.concat(location.state.itemDetails);
+      let newQuantity = updateQuantityForDuplicates(newCartItem);
+      proposedCart = cartContents.concat(newCartItem);
 
       // addition to cart is based upon whether the item currently exists in the cart
       // quantity of items will be added if item already exists in cart 

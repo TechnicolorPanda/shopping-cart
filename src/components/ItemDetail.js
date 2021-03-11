@@ -61,6 +61,8 @@ function ItemDetail({ match }) {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  console.log(quantity);
+
   return (
   <div className = 'item-selection'>
     <CartCounter/>
