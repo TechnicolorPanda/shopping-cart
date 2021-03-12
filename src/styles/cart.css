@@ -97,3 +97,10 @@ button.checkout, button.go-to-store {
 button.checkout:hover, button.go-to-store:hover {
   background-color:lightgrey;
 }
+
+.delete {
+    background-color: transparent;
+    color: blue;
+    text-decoration: underline;
+    border: none;
+}

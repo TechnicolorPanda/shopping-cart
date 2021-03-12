@@ -12,21 +12,12 @@ function Cart() {
   );
   const [cartEmpty, setCartEmpty] = useState(true);
 
-  console.log(location.state.number);
-
   // if the new item is the same as item in the cart then add quantities
 
   const updateQuantityForDuplicates = (newCartItem) => {
-    // const newCartItem = {
-    //   quantity: location.state.number, 
-    //   name: location.state.itemDetails.name, 
-    //   price: location.state.itemDetails.price,
-    //   id: location.state.itemDetails.id,
-    //   images: location.state.itemDetails.images,
-    // };
+
     for(let i = 0; i < cartContents.length; i++) {
       if(newCartItem.id === cartContents[i].id) {
-        console.log('duplicate item');
         return parseInt(newCartItem.quantity) + parseInt(cartContents[i].quantity);
       } 
     }
@@ -168,7 +159,11 @@ function Cart() {
       newQuantity = 0;
     }
     let newItemId = event.target.getAttribute('id');
-    changeQuantity(newQuantity, newItemId);
+    if (newQuantity === 0) {
+      deleteItem(event);
+    } else {
+      changeQuantity(newQuantity, newItemId);
+    };
   }
 
   // handles quantity increase when plus button is selected
@@ -202,6 +197,18 @@ function Cart() {
       numberOfItems = parseInt(numberOfItems) + parseInt(cartItem.quantity)
     )));
     return numberOfItems;
+  }
+
+  const deleteItem = (event) => {
+    let newItemId = event.target.getAttribute('id');
+    let identifyElement = cartContents.find((element) => {
+      return (element.id === parseInt(newItemId))
+    })
+    let indexOfElement = cartContents.indexOf(identifyElement);
+    setCartContents(cartContents => cartContents.filter(cartItem => cartItem.id !== newItemId));
+    const left = cartContents.slice(0, indexOfElement);
+    const right = cartContents.slice(indexOfElement + 1);
+    setCartContents(left.concat(right));
   }
 
   return (
@@ -242,6 +249,11 @@ function Cart() {
               value = {cartItem.quantity}
               id = {cartItem.id}
               onClick = {increaseQuantity}>+</button>
+            <button
+              className = 'delete'
+              value = {cartItem.id}
+              id = {cartItem.id}
+              onClick = {deleteItem}>delete</button>
           </div>
           <div className = 'column'>${formattedPrice(calculatePrice(cartItem.price, cartItem.quantity))}</div>
         </h3>
