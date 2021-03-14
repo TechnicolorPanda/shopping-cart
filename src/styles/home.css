@@ -61,7 +61,7 @@ button.shop:hover {
 }
 
 .background {
-    background-image: url('brooklyn-bridge.jpg');
+    background-image: url('/src/images/brooklyn-bridge.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;

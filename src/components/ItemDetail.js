@@ -66,7 +66,7 @@ function ItemDetail({ match }) {
     <CartCounter/>
     {displayItems 
     ? <div className = 'column'>
-        <div><img className = 'item-detail' src = {'./.' + itemDetails.images} alt = {itemDetails.name}></img></div>
+        <div><img className = 'item-detail' src = {itemDetails.images} alt = {itemDetails.name}></img></div>
         <h2>{itemDetails.name}</h2>
         <h3 className = 'description'>{itemDetails.description}</h3>
         <h2>${formattedPrice(itemDetails.price)}</h2>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ShopItems from './ShopItems';
 import CartCounter from './CartCounter';
 
+
 function Shop() {
 
   const items = ShopItems;
@@ -14,6 +15,12 @@ function Shop() {
     return rawPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  function importedImage(itemImage) {
+    let imageName = itemImage;
+    console.log(imageName);
+    return imageName;
+  }
+
   return (
     <div className = 'content'>
       <CartCounter/>
@@ -21,6 +28,7 @@ function Shop() {
       <div className = 'row' id = 'shop'>
         {items.item.map((item => ( 
           <div className = 'column' key = {item.id}>
+            {console.log(item.images)}
             <Link to = {`/shop/${item.id}`}>
               <img src = {item.images} alt = {item.name} className = 'item'></img>
             </Link>
