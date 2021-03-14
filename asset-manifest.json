@@ -1,21 +1,29 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.86355ecc.chunk.css",
-    "main.js": "/shopping-cart/static/js/main.13f2b59b.chunk.js",
-    "main.js.map": "/shopping-cart/static/js/main.13f2b59b.chunk.js.map",
+    "main.css": "/shopping-cart/static/css/main.d1b7a3a5.chunk.css",
+    "main.js": "/shopping-cart/static/js/main.09b5b43c.chunk.js",
+    "main.js.map": "/shopping-cart/static/js/main.09b5b43c.chunk.js.map",
     "runtime-main.js": "/shopping-cart/static/js/runtime-main.b6a2e420.js",
     "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.b6a2e420.js.map",
     "static/js/2.dba13dc1.chunk.js": "/shopping-cart/static/js/2.dba13dc1.chunk.js",
     "static/js/2.dba13dc1.chunk.js.map": "/shopping-cart/static/js/2.dba13dc1.chunk.js.map",
     "index.html": "/shopping-cart/index.html",
-    "static/css/main.86355ecc.chunk.css.map": "/shopping-cart/static/css/main.86355ecc.chunk.css.map",
+    "static/css/main.d1b7a3a5.chunk.css.map": "/shopping-cart/static/css/main.d1b7a3a5.chunk.css.map",
     "static/js/2.dba13dc1.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.dba13dc1.chunk.js.LICENSE.txt",
-    "static/media/home.css": "/shopping-cart/static/media/brooklyn-bridge.cbcf8baa.jpg"
+    "static/media/broken-bridge.5921557e.jpg": "/shopping-cart/static/media/broken-bridge.5921557e.jpg",
+    "static/media/home.css": "/shopping-cart/static/media/brooklyn-bridge.cbcf8baa.jpg",
+    "static/media/covered-bridge.0c40cfb2.jpg": "/shopping-cart/static/media/covered-bridge.0c40cfb2.jpg",
+    "static/media/golden-gate.16a4425c.jpg": "/shopping-cart/static/media/golden-gate.16a4425c.jpg",
+    "static/media/little-manatee-river.44d8aacc.jpg": "/shopping-cart/static/media/little-manatee-river.44d8aacc.jpg",
+    "static/media/logo.3a579eb6.png": "/shopping-cart/static/media/logo.3a579eb6.png",
+    "static/media/mackinaw-bridge.9ae501c7.jpg": "/shopping-cart/static/media/mackinaw-bridge.9ae501c7.jpg",
+    "static/media/old-bridge-on-canal.5dca8f72.jpg": "/shopping-cart/static/media/old-bridge-on-canal.5dca8f72.jpg",
+    "static/media/tower-bridge.18735b99.jpg": "/shopping-cart/static/media/tower-bridge.18735b99.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b6a2e420.js",
     "static/js/2.dba13dc1.chunk.js",
-    "static/css/main.86355ecc.chunk.css",
-    "static/js/main.13f2b59b.chunk.js"
+    "static/css/main.d1b7a3a5.chunk.css",
+    "static/js/main.09b5b43c.chunk.js"
   ]
 }
