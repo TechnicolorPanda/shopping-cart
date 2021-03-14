@@ -15,16 +15,16 @@ function Nav(props) {
   return (
     <nav>
       <ul className = 'nav-links'>
-        <Link to = '/'>
+        <Link to = '/shopping-cart/'>
           <li className = 'logo'><img src = {logo} alt = 'bridge logo'></img></li>
         </Link>
 
-        <Link to = '/shop'>
+        <Link to = '/shopping-cart/shop'>
           <li className = 'shop'>Shop</li>
         </Link>
 
         <Link to = {{
-          pathname: '/cart',
+          pathname: '/shopping-cart/cart',
           state: {
             number: quantity,
             itemDetails: itemDetails,

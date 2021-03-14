@@ -77,7 +77,7 @@ function ItemDetail({ match }) {
           <button id = 'increase' onClick = {increaseQuantity}>+</button>
 
           <Link to = {{
-            pathname: `/cart`,
+            pathname: `/shopping-cart/cart`,
             state: {
               number: quantity,
               itemDetails: itemDetails,
