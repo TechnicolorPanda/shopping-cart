@@ -4,12 +4,22 @@
 
 A basic e-commerce page with store and shopping-cart. This project was an assignment for [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/shopping-cart)'s Javascript/React lessons.
 
-> See it live on [TechnicolorPanda.github.io/shopping-cart](https://Technicolor.github.io/shopping-cart/)
+> See it live on [technicolorpanda.github.io/shopping-cart](https://technicolorpanda.github.io/shopping-cart/)
 
 ### Screenshots
 
 #### home page
-![image](https://github.com/TechnicolorPanda/shopping-cart/blob/main/public/images/home-page.png?raw=true)
+![image](https://github.com/TechnicolorPanda/shopping-cart/blob/main/public/images/home.png?raw=true)
+
+### shop page
+![image](https://github.com/TechnicolorPanda/shopping-cart/blob/main/public/images/shop.png?raw=true)
+
+### item detail page
+![image](https://github.com/TechnicolorPanda/shopping-cart/blob/main/public/images/item-details.png?raw=true)
+
+### cart page
+![image](https://github.com/TechnicolorPanda/shopping-cart/blob/main/public/images/cart.png?raw=true)
+
 
 ## Objectives & Outcomes
 

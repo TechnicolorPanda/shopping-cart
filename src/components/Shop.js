@@ -32,10 +32,10 @@ function Shop() {
             <Link to = {`/shop/${item.id}`}>
               <img src = {item.images} alt = {item.name} className = 'item'></img>
             </Link>
-            <h2>{item.name}</h2>
-            <h2>${formattedPrice(item.price)}</h2>
+            <h3>{item.name}</h3>
+            <h3>${formattedPrice(item.price)}</h3>
           </div>
-        )))};
+        )))}
       </div>
     </div>
   );
