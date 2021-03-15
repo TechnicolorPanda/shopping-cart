@@ -29,7 +29,7 @@ function Shop() {
         {items.item.map((item => ( 
           <div className = 'column' key = {item.id}>
             {console.log(item.images)}
-            <Link to = {`/shopping-cart/shop/${item.id}`}>
+            <Link to = {`./shopping-cart/shop/${item.id}`}>
               <img src = {item.images} alt = {item.name} className = 'item'></img>
             </Link>
             <h3>{item.name}</h3>
