@@ -17,11 +17,11 @@ function App() {
           <Nav/>
         </div>
         <div className = 'content'>
-            <Route path = '/' exact component = {Home} />
-            <Route path = '/shopping-cart/' exact component = {Home} />
+            <Route exact path = '/' component = {Home} />
+            <Route exact path = '/shopping-cart/' component = {Home} />
             <Route path = '/cart' component = {Cart}/>
-            <Route path = '/shop' exact component = {Shop}/>
-            <Route path = '/shop/:id' exact component = {ItemDetail}/>
+            <Route exact path = '/shop' component = {Shop}/>
+            <Route exact path = '/shop/:id' component = {ItemDetail}/>
             <Route path = '/checkout' component = {Checkout}/>
         </div>
       </div>
