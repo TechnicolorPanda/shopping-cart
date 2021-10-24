@@ -6,27 +6,26 @@ import Cart from './components/Cart';
 import Shop from './components/Shop';
 import ItemDetail from './components/ItemDetail';
 import Checkout from './components/Checkout';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 function App() {
 
   return (
-    <Router>
+    <HashRouter>
       <div className = 'App'>
         <div className = 'navbar'>
           <Nav/>
         </div>
         <div className = 'content'>
-          <Switch>
+            <Route path = '/' exact component = {Home} />
             <Route path = '/shopping-cart/' exact component = {Home} />
-            <Route path = '/shopping-cart/cart' component = {Cart}/>
-            <Route path = '/shopping-cart/shop' exact component = {Shop}/>
-            <Route path = '/shopping-cart/shop/:id' exact component = {ItemDetail}/>
-            <Route path = '/shopping-cart/checkout' component = {Checkout}/>
-          </Switch>
+            <Route path = '/cart' component = {Cart}/>
+            <Route path = '/shop' exact component = {Shop}/>
+            <Route path = '/shop/:id' exact component = {ItemDetail}/>
+            <Route path = '/checkout' component = {Checkout}/>
         </div>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

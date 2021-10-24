@@ -14,11 +14,13 @@ const Home = () => {
           Quality Bridges
         </h1>
         <h3 className = 'tagline'>"Every path in life has a bridge ..."</h3>
-        <Link to = {`./shopping-cart/shop`}>
-          <button className = 'shop'>
-            Shop Now
-          </button>
-        </Link>
+        <nav>
+          <Link to = '/shop'>
+            <button className = 'shop'>
+              Shop Now
+            </button>
+          </Link>
+        </nav>
       </div>
     </div>
   );

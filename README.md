@@ -34,7 +34,7 @@ Further learning outcomes include:
 
 ### Javascript Framework
 
-- React
+- ReactclassName = 'center-heading'
 
 ### Libraries, extensions and tools
 

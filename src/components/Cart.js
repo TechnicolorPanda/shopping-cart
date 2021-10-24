@@ -262,12 +262,12 @@ function Cart() {
         </div>
       }
 
-      <Link to = './shopping-cart/shop'>
+      <Link to = '/shop'>
         <button className = 'go-to-store'>
         Keep Shopping
         </button>
       </Link>
-      <Link to = './shopping-cart/checkout'>
+      <Link to = '/checkout'>
         <button className = 'checkout'>
         Checkout
         </button>
