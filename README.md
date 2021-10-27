@@ -34,7 +34,7 @@ Further learning outcomes include:
 
 ### Javascript Framework
 
-- ReactclassName = 'center-heading'
+- [ReactJS](https://reactjs.org/) - Library for building user interfaces
 
 ### Libraries, extensions and tools
 
